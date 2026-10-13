@@ -1,0 +1,3249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paras ENT Clinic | Sector 12, Gurugram | Ear, Nose &amp; Throat Care Since 2016</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Calm, careful ENT care for children and adults in Sector 12, Gurugram (Delhi NCR) since 2016. Fast appointment booking for ear pain, hearing tests, sinus, allergies, vertigo, and wax removal." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Paras ENT Clinic | Sector 12, Gurugram | Ear, Nose &amp; Throat Specialists" />
+  <meta property="og:description" content="Calm, careful ENT care for children and adults in Sector 12, Gurugram since 2016. Book appointments for ear, nose, throat and hearing care." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://parasentclinic.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Paras ENT Clinic - Sector 12, Gurugram" />
+  <meta name="twitter:description" content="Calm, careful ENT care for your family in Sector 12, Gurugram. Fast booking in under 10 seconds." />
+  
+  <!-- Typography: High-contrast editorial serif paired with clean geometric sans (No Inter font used) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Schema.org MedicalClinic Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Paras ENT Clinic",
+    "description": "Calm, careful ENT care for children and adults in Sector 12, Gurugram since 2016.",
+    "url": "https://parasentclinic.com/",
+    "telephone": "[PHONE]",
+    "medicalSpecialty": "Otolaryngologic",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 12",
+      "addressLocality": "Gurugram",
+      "addressRegion": "Haryana",
+      "postalCode": "122001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.4728,
+      "longitude": 77.0371
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:30",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "10:00",
+        "closes": "13:00",
+        "description": "Closed on the second Sunday of every month"
+      }
+    ],
+    "physician": [
+      {
+        "@type": "Physician",
+        "name": "Dr. [DOCTOR NAME]",
+        "medicalSpecialty": "Otolaryngologic",
+        "jobTitle": "Senior ENT Specialist",
+        "qualifications": "[QUALIFICATIONS]",
+        "identifier": "[REGISTRATION NUMBER]"
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. [DOCTOR NAME]",
+        "medicalSpecialty": "Otolaryngologic",
+        "jobTitle": "ENT Specialist & Rhinologist",
+        "qualifications": "[QUALIFICATIONS]",
+        "identifier": "[REGISTRATION NUMBER]"
+      }
+    ],
+    "priceRange": "[PRICE]",
+    "hasMap": "https://maps.google.com/?q=Sector+12+Gurugram+Paras+ENT+Clinic"
+  }
+  </script>
+
+  <style>
+    /* CSS Reset & Base Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --color-primary-indigo: #4F46E5;
+      --color-primary-dark: #312E81;
+      --color-primary-deep: #1E1B4B;
+      --color-slate-950: #0B0F19;
+      --color-slate-900: #0F172A;
+      --color-slate-800: #1E293B;
+      --color-slate-700: #334155;
+      --color-slate-600: #475569;
+      --color-slate-400: #94A3B8;
+      --color-slate-200: #E2E8F0;
+      --color-slate-100: #F1F5F9;
+      --color-slate-50: #F8FAFC;
+      --color-white: #FFFFFF;
+      --color-whatsapp: #10B981;
+      --color-whatsapp-dark: #059669;
+      --color-accent-amber: #F59E0B;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      
+      --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.12);
+      --shadow-dark: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 18px; /* Accessible body text >= 18px everywhere */
+      line-height: 1.6;
+      color: var(--color-slate-800);
+      background-color: var(--color-slate-50);
+      padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); /* Safe thumb-bar spacing so content is never covered */
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    /* Scroll Margin: Ensures anchor jumps never get hidden behind sticky header (56px) or bottom bar */
+    section[id], [id] {
+      scroll-margin-top: 72px;
+      scroll-margin-bottom: 96px;
+    }
+
+    /* Accessibility Focus States */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #6366F1;
+      outline-offset: 3px;
+    }
+
+    /* Dedicated Phone Tap Target Helper - Guaranteed min 48px target everywhere */
+    .phone-inline-link {
+      color: var(--color-primary-indigo);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 4px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(79, 70, 229, 0.15);
+    }
+
+    .phone-inline-link:hover,
+    .phone-inline-link:active {
+      background-color: #EEF2FF;
+      color: #3730A3;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Container - No horizontal scroll at 360px */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 16px;
+      padding-right: 16px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    /* Typography Classes */
+    .font-serif {
+      font-family: var(--font-display);
+    }
+
+    .heading-balance {
+      text-wrap: balance;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Placeholder Badge Tag */
+    .placeholder-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: #3730A3;
+      background-color: #EEF2FF;
+      border: 1px dashed #818CF8;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.02em;
+    }
+
+    .placeholder-tag-dark {
+      color: #E0E7FF;
+      background-color: rgba(99, 102, 241, 0.25);
+      border: 1px dashed #818CF8;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--color-slate-950);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      height: 56px;
+    }
+
+    @media (min-width: 640px) {
+      .header-inner {
+        height: 68px;
+        gap: 16px;
+      }
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--color-white);
+    }
+
+    .brand-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--color-primary-indigo), #3730A3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    }
+
+    @media (min-width: 640px) {
+      .brand-icon-box {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--color-white);
+    }
+
+    @media (min-width: 640px) {
+      .brand-name {
+        font-size: 22px;
+      }
+    }
+
+    .header-location {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      color: var(--color-slate-400);
+    }
+
+    @media (min-width: 768px) {
+      .header-location {
+        display: flex;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-call-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-full);
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, border-color 0.2s;
+      min-height: 48px;
+    }
+
+    @media (min-width: 640px) {
+      .btn-call-header {
+        padding: 10px 18px;
+        font-size: 16px;
+        gap: 8px;
+      }
+    }
+
+    .btn-call-header:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ========================================================
+       HERO SECTION: Lightened Photo + Subtle Scrim + 360px Fit
+       ======================================================== */
+    .hero-section {
+      padding-top: 14px;
+      padding-bottom: 32px;
+      background: linear-gradient(180deg, var(--color-slate-950) 0%, #0F172A 100%);
+      color: var(--color-white);
+      position: relative;
+    }
+
+    @media (min-width: 960px) {
+      .hero-section {
+        padding-top: 32px;
+        padding-bottom: 56px;
+      }
+    }
+
+    /* Hero Frame with Lightened Background Photo & Subtle Scrim */
+    .hero-container-box {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-dark);
+      background-color: #1E293B;
+    }
+
+    /* Bright lightened background image */
+    .hero-bg-visual {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+      filter: brightness(1.15) contrast(1.02) saturate(1.05);
+      opacity: 0.95;
+      z-index: 1;
+    }
+
+    /* Hero Layout Grid */
+    .hero-inner-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding: 14px;
+    }
+
+    @media (min-width: 960px) {
+      .hero-inner-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        padding: 36px;
+        gap: 32px;
+      }
+    }
+
+    /* Subtle Scrim Box directly behind the text:
+       Guarantees 100% WCAG AAA readability while keeping the bright photo visible */
+    .hero-text-scrim {
+      background: linear-gradient(135deg, rgba(11, 15, 25, 0.88) 0%, rgba(30, 27, 75, 0.82) 65%, rgba(15, 23, 42, 0.78) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (min-width: 640px) {
+      .hero-text-scrim {
+        padding: 32px 28px;
+        border-radius: var(--radius-xl);
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #A5B4FC;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .hero-eyebrow {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+    }
+
+    /* Headline scaled for mobile (360px phones) so button fits without scroll */
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 480px) {
+      .hero-title {
+        font-size: 26px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 32px;
+        margin-bottom: 14px;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .hero-title {
+        font-size: clamp(2rem, 3.2vw, 3rem);
+      }
+    }
+
+    .hero-subline {
+      font-size: 15px;
+      line-height: 1.35;
+      color: #E0E7FF;
+      margin-bottom: 14px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (min-width: 640px) {
+      .hero-subline {
+        font-size: 19px;
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+    }
+
+    /* Action buttons: compact on 360px to stay above fold */
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .hero-cta-group {
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--color-white) 0%, #F1F5F9 100%);
+      color: var(--color-slate-900);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      min-height: 48px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    @media (min-width: 640px) {
+      .btn-hero-primary {
+        font-size: 17px;
+        padding: 14px 26px;
+        min-height: 52px;
+      }
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-hero-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--color-whatsapp);
+      color: var(--color-white);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 18px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      min-height: 48px;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+      transition: background-color 0.2s, transform 0.15s;
+    }
+
+    @media (min-width: 640px) {
+      .btn-hero-whatsapp {
+        font-size: 17px;
+        padding: 14px 22px;
+        min-height: 52px;
+      }
+    }
+
+    .btn-hero-whatsapp:hover {
+      background-color: var(--color-whatsapp-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Trust Strip */
+    .hero-trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    @media (min-width: 640px) {
+      .hero-trust-strip {
+        gap: 16px;
+        padding-top: 20px;
+      }
+    }
+
+    .trust-item-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.2;
+    }
+
+    @media (min-width: 640px) {
+      .trust-item-title {
+        font-size: 18px;
+      }
+    }
+
+    .trust-item-desc {
+      font-size: 12px;
+      color: #CBD5E1;
+      margin-top: 2px;
+    }
+
+    @media (min-width: 640px) {
+      .trust-item-desc {
+        font-size: 14px;
+        margin-top: 4px;
+      }
+    }
+
+    /* Right Hero Visual Card on Desktop */
+    .hero-desktop-preview {
+      display: none;
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 360px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (min-width: 960px) {
+      .hero-desktop-preview {
+        display: block;
+      }
+    }
+
+    .hero-desktop-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(1.12) contrast(1.02);
+    }
+
+    .hero-photo-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--color-white);
+    }
+
+    /* Section Styles */
+    .section-wrap {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    @media (min-width: 768px) {
+      .section-wrap {
+        padding-top: 68px;
+        padding-bottom: 68px;
+      }
+    }
+
+    .section-header-centered {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 40px auto;
+    }
+
+    .section-kicker {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary-indigo);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-slate-900);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: var(--color-slate-600);
+      line-height: 1.6;
+    }
+
+    /* Symptom Cards Grid - Generous Spacing & Uncramped */
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 680px) {
+      .symptom-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+    }
+
+    @media (min-width: 1060px) {
+      .symptom-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px;
+      }
+    }
+
+    .symptom-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-xl);
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      .symptom-card {
+        padding: 36px 30px;
+      }
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.1);
+      border-color: #CBD5E1;
+    }
+
+    .symptom-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .symptom-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background-color: #EEF2FF;
+      color: var(--color-primary-indigo);
+      border: 1px solid #E0E7FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Easy-to-spot starting price badge */
+    .symptom-price-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-slate-700);
+      white-space: nowrap;
+    }
+
+    .symptom-price-badge .price-prefix {
+      color: var(--color-slate-500);
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .symptom-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-slate-900);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    /* Dedicated One-Line Plain-English Symptom Box */
+    .symptom-treats-banner {
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+
+    .symptom-treats-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-primary-indigo);
+      margin-bottom: 4px;
+    }
+
+    .symptom-treats-prose {
+      font-size: 18px; /* Accessible body text >= 18px */
+      font-weight: 600;
+      color: var(--color-slate-900);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .symptom-text {
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: var(--color-slate-700); /* High contrast for older/unwell patients */
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .symptom-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--color-slate-100);
+      margin-top: auto;
+      flex-wrap: wrap;
+    }
+
+    .symptom-footer-price {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-price-label {
+      font-size: 12px;
+      color: var(--color-slate-500);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-price-tag {
+      font-size: 16px;
+      margin-top: 2px;
+    }
+
+    .btn-book-for-this {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary-indigo);
+      background-color: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      border-radius: var(--radius-full);
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 12px 20px;
+      min-height: 48px; /* Minimum 48px tap target */
+      transition: background-color 0.15s, color 0.15s, transform 0.15s;
+      touch-action: manipulation;
+    }
+
+    .btn-book-for-this:hover {
+      background-color: var(--color-primary-indigo);
+      color: var(--color-white);
+      border-color: var(--color-primary-indigo);
+      transform: translateX(2px);
+    }
+
+    /* Meet the Doctors */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 840px) {
+      .doctors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+    }
+
+    .doctor-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .doctor-media-wrap {
+      position: relative;
+      height: 230px; /* Tightened on mobile so qualifications and experience remain above the fold */
+      background-color: #E2E8F0;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .doctor-media-wrap {
+        height: 300px;
+      }
+    }
+
+    .doctor-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .doctor-photo-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--color-white);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .doctor-body {
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 640px) {
+      .doctor-body {
+        padding: 28px 24px;
+      }
+    }
+
+    .doctor-name {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-slate-900);
+      margin-bottom: 4px;
+    }
+
+    .doctor-meta-list {
+      list-style: none;
+      margin-top: 14px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--color-slate-100);
+      border-bottom: 1px solid var(--color-slate-100);
+      padding: 14px 0;
+    }
+
+    .doctor-meta-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 18px; /* Accessible body text >= 18px */
+    }
+
+    .doctor-meta-label {
+      font-weight: 600;
+      color: var(--color-slate-700);
+    }
+
+    .doctor-meta-val {
+      color: var(--color-slate-900);
+      text-align: right;
+    }
+
+    .doctor-ethics-notice {
+      background-color: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 15px;
+      color: var(--color-slate-700);
+      margin-top: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    /* Doctor Reviews & Testimonials Row Below Doctors */
+    .doctor-reviews-row {
+      margin-top: 48px;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-xl);
+      padding: 28px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 768px) {
+      .doctor-reviews-row {
+        padding: 36px 32px;
+      }
+    }
+
+    .doctor-reviews-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--color-slate-100);
+    }
+
+    .doctor-reviews-stat {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .rating-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FEF3C7;
+      border: 1px solid #FDE68A;
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+    }
+
+    .rating-stars-gold {
+      color: #D97706;
+      font-size: 17px;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .doctor-reviews-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .doctor-reviews-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-slate-900);
+      line-height: 1.3;
+    }
+
+    .doctor-reviews-subtitle {
+      font-size: 15px;
+      color: var(--color-slate-600);
+      margin-top: 2px;
+    }
+
+    .testimonials-grid-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .btn-google-reviews-compact {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-slate-800);
+      background-color: var(--color-slate-50);
+      border: 1px solid var(--color-slate-300);
+      border-radius: var(--radius-full);
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      min-height: 48px;
+      transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .btn-google-reviews-compact:hover {
+      background-color: var(--color-slate-100);
+      border-color: var(--color-slate-400);
+      transform: translateY(-1px);
+    }
+
+    /* Price Table Section */
+    .price-table-container {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .price-table-intro {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--color-slate-200);
+      background-color: #FAFAFC;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .clinic-price-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .clinic-price-table th {
+      background-color: #F8FAFC;
+      color: var(--color-slate-700);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--color-slate-200);
+    }
+
+    .clinic-price-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--color-slate-200);
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: var(--color-slate-800);
+      vertical-align: middle;
+    }
+
+    .clinic-price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .clinic-price-table tr:hover td {
+      background-color: #F8FAFC;
+    }
+
+    .service-name {
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--color-slate-900);
+      margin-bottom: 4px;
+    }
+
+    .service-desc {
+      font-size: 16px;
+      color: var(--color-slate-600);
+      line-height: 1.45;
+    }
+
+    .price-cell {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* Mobile Price Table: Transforms to clear, accessible stacked cards with ZERO horizontal scroll at 360px */
+    @media (max-width: 640px) {
+      .clinic-price-table,
+      .clinic-price-table tbody,
+      .clinic-price-table tr,
+      .clinic-price-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .clinic-price-table thead {
+        display: none;
+      }
+
+      .clinic-price-table tr {
+        padding: 20px 16px;
+        border-bottom: 1px solid var(--color-slate-200);
+      }
+
+      .clinic-price-table tr:nth-child(even) {
+        background-color: #F8FAFC;
+      }
+
+      .clinic-price-table td {
+        padding: 4px 0;
+        border: none;
+      }
+
+      .clinic-price-table td.price-cell {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--color-slate-200);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+      }
+
+      .clinic-price-table td.price-cell::before {
+        content: "Standard Fee:";
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-slate-600);
+      }
+    }
+
+    /* Reviews Section */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .review-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 14px;
+      color: var(--color-accent-amber);
+    }
+
+    .review-quote {
+      font-size: 18px; /* Accessible body text >= 18px */
+      line-height: 1.6;
+      color: var(--color-slate-800);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .review-author-meta {
+      border-top: 1px solid var(--color-slate-100);
+      padding-top: 14px;
+    }
+
+    .review-author-name {
+      font-weight: 700;
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: var(--color-slate-900);
+    }
+
+    .review-author-sub {
+      font-size: 16px;
+      color: var(--color-slate-600);
+      margin-top: 2px;
+    }
+
+    .google-reviews-action {
+      text-align: center;
+    }
+
+    .btn-google-reviews {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--color-white);
+      color: var(--color-slate-800);
+      border: 1px solid var(--color-slate-300);
+      border-radius: var(--radius-full);
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      min-height: 48px;
+      box-shadow: var(--shadow-soft);
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+
+    .btn-google-reviews:hover {
+      background-color: var(--color-slate-50);
+      border-color: var(--color-slate-400);
+    }
+
+    /* Appointment Form Section (Dark High-Contrast Card matching design screenshot) */
+    .appointment-container {
+      background: linear-gradient(145deg, #111827 0%, #0F172A 70%, #1E1B4B 100%);
+      border-radius: var(--radius-xl);
+      padding: 32px 20px;
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-dark);
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .appointment-container {
+        padding: 52px 40px;
+      }
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 960px) {
+      .booking-grid {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 48px;
+        align-items: center;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 18px; /* Accessible body text >= 18px */
+      font-weight: 600;
+      color: #E2E8F0;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-md);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 18px; /* Accessible body text >= 18px prevents iOS/Android auto-zoom */
+      padding: 14px 16px;
+      min-height: 52px; /* Minimum 48px tap target */
+      transition: border-color 0.2s, background-color 0.2s;
+      box-sizing: border-box;
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 18px;
+      padding-right: 48px;
+    }
+
+    .form-select option {
+      background-color: var(--color-slate-900);
+      color: var(--color-white);
+      padding: 10px;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      background-color: rgba(255, 255, 255, 0.14);
+      border-color: #818CF8;
+    }
+
+    .form-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .quick-date-chips {
+      display: flex;
+      flex-wrap: wrap; /* Wraps cleanly on 360px phones with no overflow */
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .date-chip-btn {
+      background-color: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #E2E8F0;
+      border-radius: var(--radius-full);
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      min-height: 48px; /* Full 48px tap target */
+      min-width: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s, border-color 0.15s;
+      touch-action: manipulation;
+    }
+
+    .date-chip-btn:hover {
+      background-color: rgba(255, 255, 255, 0.22);
+      color: var(--color-white);
+    }
+
+    .date-chip-btn.active {
+      background-color: var(--color-primary-indigo);
+      border-color: #818CF8;
+      color: var(--color-white);
+      font-weight: 700;
+    }
+
+    .btn-submit-booking {
+      width: 100%;
+      background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 18px; /* Accessible text */
+      font-weight: 700;
+      padding: 16px 24px;
+      min-height: 54px; /* Minimum 48px tap target */
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 10px;
+      touch-action: manipulation;
+    }
+
+    .btn-submit-booking:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.5);
+    }
+
+    .form-guarantee-note {
+      font-size: 16px;
+      color: #CBD5E1; /* High contrast */
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* Modal / Alert confirmation */
+    .confirmation-banner {
+      display: none;
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid #10B981;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-top: 18px;
+      color: #ECFDF5;
+    }
+
+    /* Visit Us Section */
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 840px) {
+      .visit-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    .visit-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-xl);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 640px) {
+      .visit-card {
+        padding: 36px;
+      }
+    }
+
+    .visit-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .visit-detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background-color: #EEF2FF;
+      color: var(--color-primary-indigo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .visit-detail-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-slate-900);
+      margin-bottom: 4px;
+    }
+
+    .visit-detail-text {
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: var(--color-slate-700);
+      line-height: 1.6;
+    }
+
+    .map-placeholder-card {
+      background: #F1F5F9;
+      border: 1px solid var(--color-slate-300);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .map-inner-preview {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .map-caption {
+      padding: 22px;
+      background-color: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: #CBD5E1;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      font-family: var(--font-body);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--color-slate-900);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+      min-height: 56px; /* Minimum 48px tap target */
+      touch-action: manipulation;
+    }
+
+    @media (min-width: 640px) {
+      .faq-trigger {
+        padding: 22px 24px;
+        font-size: 20px;
+      }
+    }
+
+    .faq-icon-arrow {
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      color: var(--color-primary-indigo);
+    }
+
+    .faq-item.open .faq-icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 20px 20px;
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: var(--color-slate-700);
+      line-height: 1.6;
+      border-top: 1px solid var(--color-slate-100);
+    }
+
+    @media (min-width: 640px) {
+      .faq-answer {
+        padding: 0 24px 22px 24px;
+      }
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--color-slate-950);
+      color: #94A3B8;
+      padding-top: 56px;
+      padding-bottom: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 18px; /* Accessible body text >= 18px */
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    .footer-col-title {
+      color: var(--color-white);
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-text {
+      line-height: 1.6;
+      margin-bottom: 14px;
+      font-size: 18px; /* Accessible body text >= 18px */
+      color: #CBD5E1; /* High contrast */
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link {
+      color: #CBD5E1;
+      text-decoration: none;
+      transition: color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 48px; /* Minimum 48px tap target */
+      font-size: 18px; /* Accessible body text >= 18px */
+      touch-action: manipulation;
+    }
+
+    .footer-link:hover {
+      color: var(--color-white);
+    }
+
+    .footer-ethics-block {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #94A3B8;
+    }
+
+    .footer-bottom-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom-bar {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    /* Mobile Sticky Bottom Bar (Thumb-reachable, Safe-Area aware, Never covers content) */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 64px;
+      height: auto;
+      max-height: 14vh;
+      background-color: rgba(11, 15, 25, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      z-index: 1000;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1.35fr;
+      gap: 8px;
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+      align-items: center;
+      box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 1024px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+
+    .sticky-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 48px;
+      min-height: 48px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--color-white);
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .sticky-btn:active {
+      transform: scale(0.96);
+    }
+
+    .sticky-btn-call {
+      background-color: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .sticky-btn-wa {
+      background-color: var(--color-whatsapp);
+    }
+
+    .sticky-btn-book {
+      background: linear-gradient(135deg, var(--color-primary-indigo), #3730A3);
+    }
+
+    /* SVG Icon Helpers */
+    .icon-inline {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .icon-lg {
+      width: 26px;
+      height: 26px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. HEADER: Logo and tap-to-call number
+       ======================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Logo / Brand -->
+        <a href="#hero" class="brand-logo" aria-label="Paras ENT Clinic Homepage">
+          <div class="brand-icon-box" aria-hidden="true">
+            <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 10a8 8 0 0 1 16 0c0 5-4 9-8 9-2 0-3-1-4-2.5" />
+              <path d="M12 9a2.5 2.5 0 0 1 2.5 2.5c0 1.5-1 2.5-2.5 2.5" />
+              <circle cx="8" cy="18" r="1.5" />
+            </svg>
+          </div>
+          <div>
+            <span class="brand-name">Paras ENT Clinic</span>
+          </div>
+        </a>
+
+        <!-- Location in Gurugram -->
+        <div class="header-location">
+          <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Sector 12, Gurugram</span>
+        </div>
+
+        <!-- Tap to call -->
+        <div class="header-actions">
+          <a href="tel:[PHONE]" class="btn-call-header" aria-label="Call Paras ENT Clinic at phone placeholder">
+            <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span>Call: <span class="placeholder-tag placeholder-tag-dark">[PHONE]</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ========================================================
+         2. HERO SECTION
+         Lightened photo + Subtle scrim + Instant visible CTA on 360px phones
+         ======================================================== -->
+    <section id="hero" class="hero-section" aria-label="Welcome and Clinic Overview">
+      <div class="container">
+        
+        <div class="hero-container-box">
+          <!-- Lightened, high-key clinic photo background -->
+          <img 
+            src="/src/assets/images/hero_ent_bright_clinic_1791629937047.webp" 
+            alt="ENT doctor in modern bright examination room caring for a patient at Paras ENT Clinic, Sector 12, Gurugram" 
+            class="hero-bg-visual"
+            width="1376"
+            height="768"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+
+          <div class="hero-inner-grid">
+            
+            <!-- Left: Dedicated Subtle Scrim protecting the headline and CTA -->
+            <div class="hero-text-scrim">
+              <div class="hero-eyebrow">
+                <svg class="icon-inline" style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>Expert ENT Care · Since 2016</span>
+              </div>
+              
+              <h1 class="hero-title heading-balance">
+                Calm, careful ENT care for your family in Sector 12, Gurugram
+              </h1>
+              
+              <p class="hero-subline">
+                For children and adults since 2016
+              </p>
+
+              <!-- Main Button ("Book appointment") - IMMEDIATELY visible without scrolling on 360px phones -->
+              <div class="hero-cta-group">
+                <a href="#appointment-form" class="btn-hero-primary" id="hero-book-btn">
+                  <span>Book an appointment</span>
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+
+                <a href="https://wa.me/[NUMBER]?text=Hello%20Paras%20ENT%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20an%20ENT%20appointment" class="btn-hero-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Paras ENT Clinic on WhatsApp">
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.712 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.411Z"/>
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+
+              <!-- Trust Strip: since 2016, 2 ENT specialists, [GOOGLE RATING] -->
+              <div class="hero-trust-strip">
+                <div>
+                  <div class="trust-item-title tabular-nums">Since 2016</div>
+                  <div class="trust-item-desc">Sector 12 Clinic</div>
+                </div>
+
+                <div>
+                  <div class="trust-item-title">2 Specialists</div>
+                  <div class="trust-item-desc">NMC Registered</div>
+                </div>
+
+                <div>
+                  <div class="trust-item-title">
+                    <span class="placeholder-tag placeholder-tag-dark">[GOOGLE RATING]</span>
+                  </div>
+                  <div class="trust-item-desc">Google Reviews</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Desktop Showcase -->
+            <div class="hero-desktop-preview">
+              <img 
+                src="/src/assets/images/hero_ent_bright_clinic_1791629937047.webp" 
+                alt="Gentle ear examination by ENT specialist in Sector 12 Gurugram" 
+                class="hero-desktop-img"
+                width="1376"
+                height="768"
+                loading="eager"
+                decoding="async"
+              />
+              <div class="hero-photo-badge">
+                <div>
+                  <strong style="font-size: 15px; display: block;">Sector 12 ENT Consultation</strong>
+                  <span style="font-size: 13px; color: #CBD5E1;">Children &amp; Adult Clinical Care</span>
+                </div>
+                <span class="placeholder-tag placeholder-tag-dark">[PHOTO]</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. "WHAT BRINGS YOU IN?": Symptom-led cards
+         ======================================================== -->
+    <section id="symptoms" class="section-wrap" aria-labelledby="symptoms-title">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">Patient-First ENT Care</span>
+          <h2 id="symptoms-title" class="section-heading heading-balance">
+            What brings you in?
+          </h2>
+          <p class="section-desc">
+            Select your symptom below to see transparent fees, pre-fill your consultation details, and book your visit in seconds.
+          </p>
+        </div>
+
+        <div class="symptom-grid">
+          
+          <!-- 1. Child's ear pain or tonsils -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Child's ear & gentle check -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 10a6 6 0 0 1 12 0c0 4-3 7-6 8-1.5 0-2-.5-3-1.5" />
+                    <path d="M12 9a2 2 0 0 1 2 2c0 1-1 2-2 2" />
+                    <path d="M4 14c.5 1 1.5 2 3 2.5" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Child's ear pain or tonsils</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Ear pulling, night-time pain, fever, swollen tonsils</p>
+              </div>
+
+              <p class="symptom-text">
+                Gentle, calm care for acute ear infections, fluid behind eardrums (glue ear), recurring sore throats, and enlarged tonsils in children.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Child\'s ear pain or tonsils')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 2. Sinus and allergies -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Nasal & sinus airway pathways -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v10" />
+                    <path d="M8 8a4 4 0 0 0-4 4c0 3 2 5 4 5h8c2 0 4-2 4-5a4 4 0 0 0-4-4" />
+                    <path d="M9 17v3" />
+                    <path d="M15 17v3" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Sinus and allergies</h3>
+
+              <!-- One-line plain-English description of symptoms treated (exact prompt example) -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Blocked nose, facial pain, headaches, morning sneezing</p>
+              </div>
+
+              <p class="symptom-text">
+                Targeted diagnosis for chronic sinus congestion, post-nasal drip, smog-triggered rhinitis, and deviated septum without rushing to surgery.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Sinus and allergies')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 3. Hearing loss and hearing aids (PTA, tympanometry) -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Audiometry sound waves & ear -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 11v2a8 8 0 0 0 16 0v-2" />
+                    <path d="M2 12h2" />
+                    <path d="M20 12h2" />
+                    <path d="M8 12a4 4 0 0 0 8 0" />
+                    <circle cx="12" cy="12" r="1.5" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Hearing loss &amp; hearing aids</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Muffled speech, increasing TV volume, ringing in ears</p>
+              </div>
+
+              <p class="symptom-text">
+                Sound-treated Pure Tone Audiometry (PTA), middle ear tympanometry pressure tests, and unbiased trial evaluations for digital hearing aids.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Hearing loss and hearing aids (PTA, tympanometry)')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 4. Dizziness and vertigo -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Gyroscopic vertigo & balance lines -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 3a9 9 0 0 1 9 9" />
+                    <path d="M7 12a5 5 0 0 1 5-5" />
+                    <path d="M12 17a5 5 0 0 1-5-5" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Dizziness and vertigo</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Room spinning, unsteadiness, sudden balance loss</p>
+              </div>
+
+              <p class="symptom-text">
+                Clinical assessment for inner-ear balance disorders, BPPV particle repositioning maneuvers, and non-drowsy medical vestibular care.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Dizziness and vertigo')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 5. Snoring and sleep apnoea -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Sleep crescent & airflow wave -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    <path d="M6 18c1.5 1 3.5 1 5 0" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Snoring and sleep apnoea</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Loud snoring, night gasping, morning tiredness</p>
+              </div>
+
+              <p class="symptom-text">
+                Comprehensive airway examination to assess enlarged uvula, nasal blockage, or pharyngeal collapse causing obstructive sleep apnoea.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Snoring and sleep apnoea')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 6. Ear wax -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Gentle ear canal clearance & droplet -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8" />
+                    <path d="M12 8c-2 2-2 4 0 6 1 0 2-1 2-2 0-2-2-4-2-4z" />
+                    <path d="M12 2v2" />
+                    <path d="M12 20v2" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Ear wax (Cerumen removal)</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Blocked ear feeling, fullness, itching, muffled sound</p>
+              </div>
+
+              <p class="symptom-text">
+                Safe microscopic suction and gentle syringing under direct vision. Completely pain-free removal of hard or deep impacted ear wax.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Ear wax')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 7. Nasal endoscopy -->
+          <article class="symptom-card">
+            <div>
+              <div class="symptom-card-header">
+                <div class="symptom-icon-box" aria-hidden="true">
+                  <!-- Simple line icon: Slender diagnostic endoscope & lens -->
+                  <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="7" />
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 2v3" />
+                    <path d="M12 19v3" />
+                    <path d="M2 12h3" />
+                    <path d="M19 12h3" />
+                  </svg>
+                </div>
+                <!-- Easy-to-spot starting price -->
+                <div class="symptom-price-badge">
+                  <span class="price-prefix">From</span>
+                  <span class="placeholder-tag">[PRICE]</span>
+                </div>
+              </div>
+
+              <h3 class="symptom-title">Nasal endoscopy</h3>
+
+              <!-- One-line plain-English description of symptoms treated -->
+              <div class="symptom-treats-banner">
+                <span class="symptom-treats-label">Symptoms treated:</span>
+                <p class="symptom-treats-prose">Persistent nasal blockage, sinus pressure, nosebleeds</p>
+              </div>
+
+              <p class="symptom-text">
+                High-definition video visualization of the deep nasal cavity, sinuses, polyps, and vocal cords using a slender, gentle diagnostic scope.
+              </p>
+            </div>
+
+            <div class="symptom-card-footer">
+              <div class="symptom-footer-price">
+                <span class="footer-price-label">Starting fee</span>
+                <span class="placeholder-tag footer-price-tag">[PRICE]</span>
+              </div>
+              <button type="button" class="btn-book-for-this" onclick="prefillConcern('Nasal endoscopy')">
+                <span>Book for this</span>
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. MEET THE DOCTORS (Straight after Services)
+         Photo, Name, Qualifications, Registration Number, Years of Experience
+         + Row Below with Google Rating, Review Count, and 3 Patient Testimonials
+         ======================================================== -->
+    <section id="doctors" class="section-wrap" style="background-color: #F1F5F9;" aria-labelledby="doctors-title">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">Clinical Specialists &amp; Care</span>
+          <h2 id="doctors-title" class="section-heading heading-balance">
+            Meet the doctors
+          </h2>
+          <p class="section-desc">
+            Two experienced ENT specialists providing calm, evidence-based care in Sector 12, Gurugram since 2016.
+          </p>
+        </div>
+
+        <div class="doctors-grid">
+          
+          <!-- Doctor 1: Senior ENT Specialist -->
+          <article class="doctor-card">
+            <div class="doctor-media-wrap">
+              <img 
+                src="/src/assets/images/doctor_senior_portrait_1791620308496.webp" 
+                alt="Portrait of Dr. [DOCTOR NAME], ENT Specialist at Paras ENT Clinic, Sector 12, Gurugram" 
+                class="doctor-img"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="doctor-photo-tag">[PHOTO]</span>
+            </div>
+
+            <div class="doctor-body">
+              <h3 class="doctor-name">Dr. <span class="placeholder-tag">[DOCTOR NAME]</span></h3>
+              <p style="color: var(--color-slate-700); font-size: 18px; font-weight: 500;">Senior ENT &amp; Head-Neck Specialist</p>
+
+              <ul class="doctor-meta-list">
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Qualifications:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[QUALIFICATIONS]</span></span>
+                </li>
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Registration number:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[REGISTRATION NUMBER]</span></span>
+                </li>
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Years of experience:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[YEARS OF EXPERIENCE]</span></span>
+                </li>
+              </ul>
+
+              <p style="font-size: 18px; color: var(--color-slate-700); line-height: 1.6; margin-bottom: 24px;">
+                Special interest in pediatric ear infections, micro-ear surgery, vertigo disorders, and hearing conservation. Dedicated to patient education and avoiding unnecessary surgical interventions.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+                <a href="#appointment-form" class="btn-book-for-this">
+                  <span>Book consultation with Dr. [DOCTOR NAME]</span>
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+                <div style="font-size: 17px; color: var(--color-slate-600); display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <span>Prefer to call?</span>
+                  <a href="tel:[PHONE]" class="phone-inline-link">Tap to call: <span class="placeholder-tag">[PHONE]</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 2: Associate ENT Consultant -->
+          <article class="doctor-card">
+            <div class="doctor-media-wrap">
+              <img 
+                src="/src/assets/images/doctor_associate_portrait_1791620322001.webp" 
+                alt="Portrait of Dr. [DOCTOR NAME], ENT Surgeon &amp; Rhinology Specialist at Paras ENT Clinic, Sector 12, Gurugram" 
+                class="doctor-img"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="doctor-photo-tag">[PHOTO]</span>
+            </div>
+
+            <div class="doctor-body">
+              <h3 class="doctor-name">Dr. <span class="placeholder-tag">[DOCTOR NAME]</span></h3>
+              <p style="color: var(--color-slate-700); font-size: 18px; font-weight: 500;">ENT Specialist &amp; Rhinologist</p>
+
+              <ul class="doctor-meta-list">
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Qualifications:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[QUALIFICATIONS]</span></span>
+                </li>
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Registration number:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[REGISTRATION NUMBER]</span></span>
+                </li>
+                <li class="doctor-meta-item">
+                  <span class="doctor-meta-label">Years of experience:</span>
+                  <span class="doctor-meta-val"><span class="placeholder-tag">[YEARS OF EXPERIENCE]</span></span>
+                </li>
+              </ul>
+
+              <p style="font-size: 18px; color: var(--color-slate-700); line-height: 1.6; margin-bottom: 24px;">
+                Special focus on allergic rhinitis, diagnostic nasal endoscopy, snoring &amp; sleep apnoea management, and voice disorders. Committed to thorough clinical assessment and clear explanations.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+                <a href="#appointment-form" class="btn-book-for-this">
+                  <span>Book consultation with Dr. [DOCTOR NAME]</span>
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+                <div style="font-size: 17px; color: var(--color-slate-600); display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <span>Prefer to call?</span>
+                  <a href="tel:[PHONE]" class="phone-inline-link">Tap to call: <span class="placeholder-tag">[PHONE]</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Row Below with Google Rating, Review Count, and Three Short Patient Testimonials -->
+        <div id="reviews" class="doctor-reviews-row" aria-label="Patient Reviews & Trust Summary">
+          
+          <div class="doctor-reviews-header">
+            <div class="doctor-reviews-stat">
+              <div class="rating-badge-pill">
+                <span class="placeholder-tag" style="font-size: 15px;">[GOOGLE RATING]</span>
+                <span class="rating-stars-gold" aria-hidden="true">★★★★★</span>
+              </div>
+              <div class="doctor-reviews-info">
+                <div class="doctor-reviews-title">Google Rating</div>
+                <div class="doctor-reviews-subtitle">
+                  Based on <strong><span class="placeholder-tag">[REVIEW COUNT]</span></strong> verified patient reviews
+                </div>
+              </div>
+            </div>
+
+            <a href="[LINK TO GOOGLE REVIEWS]" class="btn-google-reviews-compact" target="_blank" rel="noopener noreferrer" aria-label="Read all verified reviews on Google Reviews">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+              </svg>
+              <span>Read verified reviews on <span class="placeholder-tag">[LINK TO GOOGLE REVIEWS]</span></span>
+            </a>
+          </div>
+
+          <div class="testimonials-grid-row">
+            
+            <!-- Short Testimonial 1 -->
+            <article class="review-card">
+              <div>
+                <div class="review-stars" aria-label="Rating: 5 out of 5 stars">
+                  <span class="placeholder-tag">[GOOGLE RATING]</span>
+                  <span style="font-size: 16px; margin-left: 4px;" aria-hidden="true">★★★★★</span>
+                </div>
+                <blockquote class="review-quote">
+                  "<span class="placeholder-tag">[REVIEW]</span> Dr. was very calm and patient with my child during an acute earache. Carefully examined both ears, explained drops, and avoided unnecessary antibiotics."
+                </blockquote>
+              </div>
+              <div class="review-author-meta">
+                <div class="review-author-name"><span class="placeholder-tag">[PATIENT NAME]</span></div>
+                <div class="review-author-sub">Sector 14, Gurugram · Verified visit · <span class="placeholder-tag">[DATE]</span></div>
+              </div>
+            </article>
+
+            <!-- Short Testimonial 2 -->
+            <article class="review-card">
+              <div>
+                <div class="review-stars" aria-label="Rating: 5 out of 5 stars">
+                  <span class="placeholder-tag">[GOOGLE RATING]</span>
+                  <span style="font-size: 16px; margin-left: 4px;" aria-hidden="true">★★★★★</span>
+                </div>
+                <blockquote class="review-quote">
+                  "<span class="placeholder-tag">[REVIEW]</span> Done pure tone audiometry and gentle wax micro-suction. Clean Sector 12 clinic with proper equipment and completely upfront pricing."
+                </blockquote>
+              </div>
+              <div class="review-author-meta">
+                <div class="review-author-name"><span class="placeholder-tag">[PATIENT NAME]</span></div>
+                <div class="review-author-sub">DLF Phase 1, Gurugram · Verified visit · <span class="placeholder-tag">[DATE]</span></div>
+              </div>
+            </article>
+
+            <!-- Short Testimonial 3 -->
+            <article class="review-card">
+              <div>
+                <div class="review-stars" aria-label="Rating: 5 out of 5 stars">
+                  <span class="placeholder-tag">[GOOGLE RATING]</span>
+                  <span style="font-size: 16px; margin-left: 4px;" aria-hidden="true">★★★★★</span>
+                </div>
+                <blockquote class="review-quote">
+                  "<span class="placeholder-tag">[REVIEW]</span> Visited for chronic smog-triggered sinus congestion. The doctor performed a quick nasal endoscopy and gave a practical, step-by-step rinse routine that brought fast relief."
+                </blockquote>
+              </div>
+              <div class="review-author-meta">
+                <div class="review-author-name"><span class="placeholder-tag">[PATIENT NAME]</span></div>
+                <div class="review-author-sub">Sector 12, Gurugram · Verified visit · <span class="placeholder-tag">[DATE]</span></div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- NMC Ethical Guidance Compliance Callout -->
+        <div class="doctor-ethics-notice">
+          <svg class="icon-inline" style="color: var(--color-primary-indigo); margin-top: 2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <div>
+            <strong>National Medical Commission (NMC) Notice:</strong>
+            Doctors at Paras ENT Clinic are registered with the NMC and state medical councils. Consultations adhere to ethical medical standards. We do not make comparative or superlative claims, nor do we promise guaranteed outcomes.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. CLEAR PRICES (Table)
+         ======================================================== -->
+    <section id="prices" class="section-wrap" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">Upfront &amp; Transparent</span>
+          <h2 id="prices-title" class="section-heading heading-balance">
+            Clear prices
+          </h2>
+          <p class="section-desc">
+            No unexpected add-ons or hidden procedural charges. All clinical recommendations are discussed with you beforehand.
+          </p>
+        </div>
+
+        <div class="price-table-container">
+          <div class="price-table-intro">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+              <div>
+                <h3 style="font-size: 19px; font-weight: 700; color: var(--color-slate-900);">Standard Clinical Fee Schedule</h3>
+                <p style="font-size: 15px; color: var(--color-slate-500); margin-top: 2px;">Applicable for OPD consultations and diagnostic tests in Sector 12, Gurugram</p>
+              </div>
+              <span class="placeholder-tag">Updated [DATE]</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="clinic-price-table" aria-label="Clinic Services and Pricing Table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 50%;">Service / Procedure</th>
+                  <th scope="col" style="width: 30%;">Details Included</th>
+                  <th scope="col" style="width: 20%; text-align: right;">Standard Fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="service-name">Specialist ENT Consultation</div>
+                    <div class="service-desc">Complete medical history review and ear, nose, throat visual examination</div>
+                  </td>
+                  <td>
+                    <span style="font-size: 15px; color: var(--color-slate-600);">Includes 7-day follow-up review</span>
+                  </td>
+                  <td class="price-cell">
+                    <span class="placeholder-tag">[PRICE]</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="service-name">Hearing Test (PTA &amp; Tympanometry)</div>
+                    <div class="service-desc">Pure tone audiometry hearing evaluation and middle ear pressure test</div>
+                  </td>
+                  <td>
+                    <span style="font-size: 15px; color: var(--color-slate-600);">Full audiogram report provided</span>
+                  </td>
+                  <td class="price-cell">
+                    <span class="placeholder-tag">[PRICE]</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="service-name">Wax Removal (Micro-suction / Syringing)</div>
+                    <div class="service-desc">Safe, gentle microscopic vacuum suction or sterile water clearance</div>
+                  </td>
+                  <td>
+                    <span style="font-size: 15px; color: var(--color-slate-600);">Per ear / as clinically needed</span>
+                  </td>
+                  <td class="price-cell">
+                    <span class="placeholder-tag">[PRICE]</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="service-name">Diagnostic Endoscopy (Nasal / Laryngeal)</div>
+                    <div class="service-desc">High-definition fiberoptic endoscopy for sinus cavities or vocal cords</div>
+                  </td>
+                  <td>
+                    <span style="font-size: 15px; color: var(--color-slate-600);">Includes HD video/image capture</span>
+                  </td>
+                  <td class="price-cell">
+                    <span class="placeholder-tag">[PRICE]</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px;">
+          <p style="font-size: 15px; color: var(--color-slate-500);">
+            * Payment accepted via UPI, cash, debit/credit cards. Bills provided for medical insurance reimbursement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ========================================================
+         7. APPOINTMENT FORM: Name, Phone, Date, Problem
+         Book in under 10 seconds -> Opens wa.me/[NUMBER]
+         ======================================================== -->
+    <section id="appointment-form" class="section-wrap" aria-labelledby="form-heading">
+      <div class="container">
+        <div class="appointment-container">
+          <div class="booking-grid">
+            
+            <!-- Left Column: Context & Trust Markers -->
+            <div>
+              <span class="hero-eyebrow" style="color: #A5B4FC;">Fast Booking (Under 10 Seconds)</span>
+              <h2 id="form-heading" class="hero-title" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 16px;">
+                Consult with our specialist today
+              </h2>
+              <p style="font-size: 18px; color: #C7D2FE; line-height: 1.6; margin-bottom: 28px;">
+                Fill your basic details below. Submitting immediately prepares your WhatsApp confirmation message with our reception team.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 20px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: var(--color-whatsapp); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">✓</div>
+                  <span style="font-size: 16px; color: #E2E8F0;">No waiting queue on phone holds</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: var(--color-whatsapp); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">✓</div>
+                  <span style="font-size: 16px; color: #E2E8F0;">Prompt confirmation by WhatsApp desk</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: var(--color-whatsapp); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">✓</div>
+                  <span style="font-size: 16px; color: #E2E8F0;">Sector 12, Gurugram clinic premises</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Fast Form -->
+            <div>
+              <form id="clinic-booking-form" onsubmit="handleBookingSubmit(event)" novalidate>
+                
+                <!-- Patient Name -->
+                <div class="form-group">
+                  <label for="form-name" class="form-label">Full Name *</label>
+                  <input 
+                    type="text" 
+                    id="form-name" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="Enter your or child's name" 
+                    required 
+                    autocomplete="name"
+                  />
+                </div>
+
+                <!-- Patient Phone -->
+                <div class="form-group">
+                  <label for="form-phone" class="form-label">Mobile Number *</label>
+                  <input 
+                    type="tel" 
+                    id="form-phone" 
+                    name="phone" 
+                    class="form-input" 
+                    placeholder="e.g. 98100 XXXXX" 
+                    required 
+                    autocomplete="tel"
+                  />
+                </div>
+
+                <!-- Preferred Date + Quick Chips -->
+                <div class="form-group">
+                  <label for="form-date" class="form-label">Preferred Date *</label>
+                  <input 
+                    type="date" 
+                    id="form-date" 
+                    name="date" 
+                    class="form-input" 
+                    required 
+                  />
+                  <div class="quick-date-chips" role="group" aria-label="Quick Date Selection">
+                    <button type="button" class="date-chip-btn" onclick="setQuickDate('today')">Today</button>
+                    <button type="button" class="date-chip-btn" onclick="setQuickDate('tomorrow')">Tomorrow</button>
+                    <button type="button" class="date-chip-btn" onclick="setQuickDate('dayAfter')">In 2 Days</button>
+                  </div>
+                </div>
+
+                <!-- Problem / Concern Dropdown -->
+                <div class="form-group">
+                  <label for="form-problem" class="form-label">Main Symptom or Concern *</label>
+                  <select id="form-problem" name="problem" class="form-select" required>
+                    <option value="" disabled selected>Select primary reason for visit...</option>
+                    <option value="Child's ear pain or tonsils">Child's ear pain or tonsils</option>
+                    <option value="Sinus and allergies">Sinus and allergies</option>
+                    <option value="Hearing loss and hearing aids (PTA, tympanometry)">Hearing loss and hearing aids (PTA, tympanometry)</option>
+                    <option value="Dizziness and vertigo">Dizziness and vertigo</option>
+                    <option value="Snoring and sleep apnoea">Snoring and sleep apnoea</option>
+                    <option value="Ear wax">Ear wax removal</option>
+                    <option value="Nasal endoscopy">Nasal endoscopy</option>
+                    <option value="General ENT Consultation">General ear, nose &amp; throat checkup</option>
+                    <option value="Other ENT concern">Other ENT concern</option>
+                  </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit-booking" id="submit-btn">
+                  <span>Confirm on WhatsApp ([NUMBER])</span>
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+
+                <p class="form-guarantee-note">
+                  Submitting connects you to WhatsApp with your details pre-filled. No spam or marketing calls.
+                </p>
+
+                <!-- Feedback confirmation banner -->
+                <div id="booking-confirmation-banner" class="confirmation-banner" role="alert">
+                  <strong style="display: block; font-size: 18px; margin-bottom: 6px;">Appointment message prepared!</strong>
+                  <p id="confirmation-text" style="font-size: 16px; margin-bottom: 12px;"></p>
+                  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a id="direct-wa-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-hero-whatsapp" style="font-size: 16px; padding: 10px 18px; min-height: 48px;">
+                      Open WhatsApp Now
+                    </a>
+                    <a href="tel:[PHONE]" class="btn-call-header" style="font-size: 16px; padding: 10px 18px; min-height: 48px;">
+                      Call Front Desk <span class="placeholder-tag">[PHONE]</span>
+                    </a>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. VISIT US: Address, Hours, Map Placeholder, Landmark
+         ======================================================== -->
+    <section id="visit" class="section-wrap" style="background-color: #F1F5F9;" aria-labelledby="visit-title">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">Find Our Clinic</span>
+          <h2 id="visit-title" class="section-heading heading-balance">
+            Visit us in Sector 12
+          </h2>
+          <p class="section-desc">
+            Conveniently located in Sector 12, Gurugram with ground-floor access and easy parking.
+          </p>
+        </div>
+
+        <div class="visit-grid">
+          
+          <!-- Clinic Details Card -->
+          <div class="visit-card">
+            
+            <!-- Address Item -->
+            <div class="visit-detail-item">
+              <div class="visit-detail-icon" aria-hidden="true">
+                <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="visit-detail-title">Clinic Address</h3>
+                <p class="visit-detail-text">
+                  <strong>Paras ENT Clinic</strong><br />
+                  Sector 12, Gurugram, Haryana 122001 (Delhi NCR)
+                </p>
+              </div>
+            </div>
+
+            <!-- Landmark -->
+            <div class="visit-detail-item">
+              <div class="visit-detail-icon" aria-hidden="true">
+                <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                  <line x1="9" y1="3" x2="9" y2="18" />
+                  <line x1="15" y1="6" x2="15" y2="21" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="visit-detail-title">Nearby Landmark</h3>
+                <p class="visit-detail-text">
+                  Near <span class="placeholder-tag">[LANDMARK]</span> (Close to Sector 12 Chowk, easily accessible from Old Railway Road &amp; Old Delhi Road).
+                </p>
+              </div>
+            </div>
+
+            <!-- Clinic Hours -->
+            <div class="visit-detail-item">
+              <div class="visit-detail-icon" aria-hidden="true">
+                <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="visit-detail-title">Consultation Hours</h3>
+                <p class="visit-detail-text">
+                  <strong>Monday – Saturday:</strong> <span class="placeholder-tag">[HOURS]</span><br />
+                  <strong>Sunday:</strong> <span class="placeholder-tag">[HOURS]</span> (By prior appointment; <em>Closed on 2nd Sunday of each month</em>)
+                </p>
+              </div>
+            </div>
+
+            <!-- Contact Direct Channels -->
+            <div class="visit-detail-item" style="margin-bottom: 0;">
+              <div class="visit-detail-icon" aria-hidden="true">
+                <svg class="icon-inline icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="visit-detail-title">Front Desk &amp; Inquiries</h3>
+                <p class="visit-detail-text">
+                  Phone: <a href="tel:[PHONE]" class="phone-inline-link"><span class="placeholder-tag">[PHONE]</span></a><br />
+                  WhatsApp: <a href="https://wa.me/[NUMBER]" class="phone-inline-link" style="color: var(--color-whatsapp-dark);">wa.me/<span class="placeholder-tag">[NUMBER]</span></a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Map Placeholder Card with Visual Clinic Environment -->
+          <div class="map-placeholder-card">
+            <img 
+              src="/src/assets/images/clinic_interior_room_1791620335214.webp" 
+              alt="Paras ENT Clinic diagnostic consultation facility in Sector 12, Gurugram" 
+              class="map-inner-preview"
+              width="1200"
+              height="670"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="map-caption">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="placeholder-tag" style="background-color: #E2E8F0; color: #1E293B;">[MAP]</span>
+                <span style="font-size: 14px; color: var(--color-slate-500);">Gurugram, Haryana</span>
+              </div>
+              <p style="font-size: 18px; color: var(--color-slate-700); margin: 0; line-height: 1.5;">
+                Click below to view GPS directions on Google Maps to Paras ENT Clinic, Sector 12.
+              </p>
+              <a href="https://maps.google.com/?q=Sector+12+Gurugram+Paras+ENT+Clinic" target="_blank" rel="noopener noreferrer" class="btn-hero-primary" style="background: var(--color-slate-900); color: var(--color-white); font-size: 17px; padding: 14px 22px; justify-content: center; min-height: 48px;">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Open in Google Maps ([MAP])</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. SHORT FAQ & FOOTER
+         ======================================================== -->
+    <section id="faq" class="section-wrap" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">Got Questions?</span>
+          <h2 id="faq-title" class="section-heading heading-balance">
+            Frequently asked questions
+          </h2>
+          <p class="section-desc">
+            Direct, calm answers to help you prepare for your visit to our Sector 12 clinic.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Do you treat young children and infants?</span>
+              <svg class="icon-inline faq-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Both ENT doctors treat pediatric conditions including acute earache, glue ear, adenoids, recurring tonsillitis, and nasal foreign bodies. Examinations are gentle, and procedures are carefully explained to parents.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>How soon can I get an appointment?</span>
+              <svg class="icon-inline faq-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              Same-day appointments are available for urgent ear pain, sudden dizziness, or breathing issues. You can book in under 10 seconds through our appointment form, via WhatsApp, or by calling our clinic desk directly at <a href="tel:[PHONE]" class="phone-inline-link"><span class="placeholder-tag">[PHONE]</span></a>. Walk-in patients are accommodated with a short waiting window.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Do I need a referral from another doctor?</span>
+              <svg class="icon-inline faq-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              No referral is necessary. You may book directly for any ear, nose, throat, voice, or hearing symptom. If you have past medical files or scan reports, feel free to bring them along.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>How are procedures like wax removal or endoscopy done?</span>
+              <svg class="icon-inline faq-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              Diagnostic procedures are performed directly in our OPD treatment suite under direct visualization. Wax removal is carried out gently using micro-suction. Diagnostic nasal endoscopy uses a slender, high-definition endoscope with a local decongestant spray to minimize discomfort.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Col 1: About Clinic -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <div class="brand-icon-box" style="width: 38px; height: 38px;" aria-hidden="true">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 10a8 8 0 0 1 16 0c0 5-4 9-8 9-2 0-3-1-4-2.5" />
+              </svg>
+            </div>
+            <span class="brand-name" style="font-size: 20px;">Paras ENT Clinic</span>
+          </div>
+          <p class="footer-text">
+            Calm, careful ear, nose, and throat care for children and adults in Sector 12, Gurugram (Delhi NCR). Serving families since 2016.
+          </p>
+          <p class="footer-text" style="font-size: 15px;">
+            Address: Sector 12, Gurugram, Haryana 122001
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h3 class="footer-col-title">Clinic Services</h3>
+          <ul class="footer-links-list">
+            <li><a href="#symptoms" class="footer-link">Child's Ear Pain &amp; Tonsils</a></li>
+            <li><a href="#symptoms" class="footer-link">Sinus &amp; Allergy Treatment</a></li>
+            <li><a href="#symptoms" class="footer-link">Hearing Tests (PTA &amp; Tympanometry)</a></li>
+            <li><a href="#symptoms" class="footer-link">Dizziness &amp; Vertigo Clinic</a></li>
+            <li><a href="#prices" class="footer-link">Clear Consultation Prices</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Direct Contacts (No call required) -->
+        <div>
+          <h3 class="footer-col-title">Reach Us Directly</h3>
+          <p class="footer-text">Every appointment can be booked without making a phone call.</p>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://wa.me/[NUMBER]" class="footer-link" target="_blank" rel="noopener noreferrer">
+                <span style="color: var(--color-whatsapp);">●</span> WhatsApp: <span class="placeholder-tag placeholder-tag-dark">[NUMBER]</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:[PHONE]" class="footer-link">
+                <span style="color: #818CF8;">●</span> Phone: <span class="placeholder-tag placeholder-tag-dark">[PHONE]</span>
+              </a>
+            </li>
+            <li>
+              <a href="#appointment-form" class="footer-link">
+                <span style="color: var(--color-accent-amber);">●</span> 10-Second Online Booking Form
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- NMC & Medical Disclaimer Notice -->
+      <div class="footer-ethics-block">
+        <p style="margin-bottom: 8px;">
+          <strong>Medical Notice &amp; Emergency Advice:</strong> The information on this website is for general educational and appointment scheduling purposes and does not substitute professional medical diagnosis. If you or your child experience sudden severe respiratory distress, acute stridor, foreign body ingestion, or trauma, please visit the emergency department of the nearest hospital immediately.
+        </p>
+        <p style="margin: 0;">
+          <strong>NMC Ethics Compliance:</strong> Registered under National Medical Commission guidelines. We strictly refrain from misleading advertisements, guaranteed cures, or competitive claims.
+        </p>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          © 2016–2026 Paras ENT Clinic, Sector 12, Gurugram. All rights reserved.
+        </div>
+        <div>
+          Sector 12, Gurugram (Delhi NCR), Haryana 122001
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       10. MOBILE STICKY BOTTOM BAR (Call, WhatsApp, Book)
+       Strictly <= 15% mobile viewport height
+       ======================================================== -->
+  <aside class="mobile-sticky-bar" aria-label="Quick Mobile Actions">
+    <a href="tel:[PHONE]" class="sticky-btn sticky-btn-call" aria-label="Call clinic at [PHONE]">
+      <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+      <span>Call</span>
+    </a>
+
+    <a href="https://wa.me/[NUMBER]?text=Hello%20Paras%20ENT%20Clinic%2C%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener noreferrer" class="sticky-btn sticky-btn-wa" aria-label="Message on WhatsApp">
+      <svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.712 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.411Z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <a href="#appointment-form" class="sticky-btn sticky-btn-book" aria-label="Book appointment, scroll to form">
+      <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>Book</span>
+    </a>
+  </aside>
+
+  <!-- ========================================================
+       INLINE JAVASCRIPT FOR FAST INTERACTIVITY & ZERO FRAMEWORK OVERHEAD
+       ======================================================== -->
+  <script>
+    // Set default date to today in form
+    (function initDate() {
+      const dateInput = document.getElementById('form-date');
+      if (dateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+      }
+    })();
+
+    // Quick Date Selection Helper
+    function setQuickDate(type) {
+      const dateInput = document.getElementById('form-date');
+      const target = new Date();
+      if (type === 'tomorrow') {
+        target.setDate(target.getDate() + 1);
+      } else if (type === 'dayAfter') {
+        target.setDate(target.getDate() + 2);
+      }
+      const yyyy = target.getFullYear();
+      const mm = String(target.getMonth() + 1).padStart(2, '0');
+      const dd = String(target.getDate()).padStart(2, '0');
+      dateInput.value = `${yyyy}-${mm}-${dd}`;
+
+      // Highlight active chip
+      const chips = document.querySelectorAll('.date-chip-btn');
+      chips.forEach(btn => btn.classList.remove('active'));
+      if (window.event && window.event.target) {
+        window.event.target.classList.add('active');
+      }
+    }
+
+    // Pre-fill Symptom/Problem and Scroll Smoothly to Form
+    function prefillConcern(concernText) {
+      const problemSelect = document.getElementById('form-problem');
+      const formSection = document.getElementById('appointment-form');
+      const nameInput = document.getElementById('form-name');
+
+      if (problemSelect) {
+        let found = false;
+        for (let i = 0; i < problemSelect.options.length; i++) {
+          if (problemSelect.options[i].value === concernText) {
+            problemSelect.selectedIndex = i;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          problemSelect.value = concernText;
+        }
+
+        problemSelect.style.borderColor = '#818CF8';
+        problemSelect.style.backgroundColor = 'rgba(99, 102, 241, 0.25)';
+        setTimeout(() => {
+          problemSelect.style.borderColor = '';
+          problemSelect.style.backgroundColor = '';
+        }, 1800);
+      }
+
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          if (nameInput) {
+            nameInput.focus();
+          }
+        }, 600);
+      }
+    }
+
+    // Appointment Form Submission Handler
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+
+      const name = (document.getElementById('form-name').value || '').trim();
+      const phone = (document.getElementById('form-phone').value || '').trim();
+      const date = (document.getElementById('form-date').value || '').trim();
+      const problem = (document.getElementById('form-problem').value || '').trim();
+
+      if (!name) {
+        alert('Please enter your name.');
+        document.getElementById('form-name').focus();
+        return;
+      }
+      if (!phone || phone.length < 6) {
+        alert('Please enter a valid contact phone number.');
+        document.getElementById('form-phone').focus();
+        return;
+      }
+      if (!problem) {
+        alert('Please select your symptom or reason for visit.');
+        document.getElementById('form-problem').focus();
+        return;
+      }
+
+      const messageText = `Hello Paras ENT Clinic, I would like to book an appointment.\n\n• Name: ${name}\n• Phone: ${phone}\n• Preferred Date: ${date}\n• Concern: ${problem}\n\nPlease confirm availability for Sector 12, Gurugram.`;
+      
+      const encodedMsg = encodeURIComponent(messageText);
+      const waUrl = `https://wa.me/[NUMBER]?text=${encodedMsg}`;
+
+      const banner = document.getElementById('booking-confirmation-banner');
+      const confirmationText = document.getElementById('confirmation-text');
+      const directWaLink = document.getElementById('direct-wa-link');
+
+      if (banner && confirmationText && directWaLink) {
+        confirmationText.textContent = `Prepared for ${name} (${phone}) on ${date} for "${problem}". Opening WhatsApp at [NUMBER] now.`;
+        directWaLink.href = waUrl;
+        banner.style.display = 'block';
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      window.location.href = waUrl;
+    }
+
+    // Accessible FAQ Accordion Toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          const trigger = other.querySelector('.faq-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+
+</body>
+</html>

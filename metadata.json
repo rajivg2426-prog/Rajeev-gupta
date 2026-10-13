@@ -1,0 +1,6 @@
+{
+  "name": "Paras ENT Clinic - Sector 12, Gurugram",
+  "description": "Calm, careful ENT care for children and adults in Sector 12, Gurugram (Delhi NCR) since 2016. Book appointments for ear, nose, throat and hearing care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
