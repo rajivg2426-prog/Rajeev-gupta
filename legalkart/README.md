@@ -11,6 +11,8 @@ Specification and reference implementation for a mobile app that produces ready-
 | | |
 |---|---|
 | [`SPEC.md`](SPEC.md) | Full product and technical specification, sections (a)–(f) |
+| [`docs/USER-GUIDE.md`](docs/USER-GUIDE.md) | Step-by-step user guide: rent agreement walkthrough, tenant OTP, troubleshooting, FAQ |
+| [`docs/MARKETING-PLAN.md`](docs/MARKETING-PLAN.md) | Positioning, audiences, 90-day launch plan, channels, ready-to-use copy, KPIs, marketing compliance |
 | [`db/`](db) | PostgreSQL 16 schema and an illustrative seed |
 | [`schemas/`](schemas) | JSON Schemas for templates and filled documents |
 | [`templates/`](templates) | Residential Rent Agreement template |
