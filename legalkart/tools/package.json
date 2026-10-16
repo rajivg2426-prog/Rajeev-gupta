@@ -1,0 +1,14 @@
+{
+  "name": "legalkart-docs-tools",
+  "private": true,
+  "type": "module",
+  "description": "Builds the PDFs in ../pdf from the Markdown docs.",
+  "scripts": {
+    "pdf": "node md-to-pdf.mjs ../docs/USER-GUIDE.md ../pdf/LegalKart-User-Guide.pdf \"Step-by-step guide to making a stamped rent agreement: tenant OTP verification, payment, e-stamp, printing and signing, troubleshooting and FAQ.\" && node md-to-pdf.mjs ../docs/MARKETING-PLAN.md ../pdf/LegalKart-Marketing-Plan.pdf \"Positioning, audiences, 90-day launch plan, channels, ready-to-use copy, KPIs and marketing compliance checklist.\" && node md-to-pdf.mjs ../SPEC.md ../pdf/LegalKart-Product-Technical-Spec.pdf \"Product and technical specification: tech stack, database schema, integration flows, template JSON Schema, build plan and sample code.\""
+  },
+  "dependencies": {
+    "marked": "^15.0.12",
+    "mermaid": "^11.17.2",
+    "playwright-core": "^1.64.1"
+  }
+}

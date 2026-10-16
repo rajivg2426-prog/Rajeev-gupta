@@ -1,5 +1,6 @@
 // Markdown → branded A4 PDF (cover page, page numbers, Mermaid diagrams), via headless Chromium.
-// Setup (once, in this folder): npm i marked@15 playwright-core@1 mermaid@11   (PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1)
+// Setup (once, in this folder): PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install
+// Rebuild all PDFs: npm run pdf   (needs Chromium; set CHROMIUM_PATH if not at /opt/pw-browsers/chromium)
 // Usage: node build.mjs <input.md> <output.pdf> "<subtitle>"
 import { readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
