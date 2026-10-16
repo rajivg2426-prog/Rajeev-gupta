@@ -1,0 +1,205 @@
+{
+  "$schema": "../schemas/document-template.schema.json",
+  "templateKey": "rent-agreement.residential",
+  "version": "1.0.0",
+  "documentType": "RENT_AGREEMENT",
+  "title": "Residential Rent Agreement",
+  "locale": "en-IN",
+
+  "jurisdiction": {
+    "states": ["DL", "HR", "KA"],
+    "excludedStates": ["MH"]
+  },
+
+  "legalMeta": {
+    "governingLaws": [
+      "Indian Contract Act, 1872",
+      "Transfer of Property Act, 1882",
+      "Registration Act, 1908",
+      "Indian Stamp Act, 1899 and the applicable State Stamp Act"
+    ],
+    "registration": {
+      "mandatory": false,
+      "mandatoryIf": { "field": "terms.termMonths", "op": "gt", "value": 11 },
+      "note": "Leases from year to year or for a term exceeding one year require compulsory registration under s.17 Registration Act, 1908. This template caps the term at 11 months. Maharashtra uses the separate Leave & Licence template because registration is mandatory there irrespective of term."
+    },
+    "maxTermMonths": 11,
+    "eSignPermitted": false,
+    "notarisationRecommended": true,
+    "lawyerReviewRecommended": true
+  },
+
+  "parties": [
+    {
+      "role": "LANDLORD", "label": "Landlord / Owner", "min": 1, "max": 4,
+      "otpRequired": false, "autofillFromProfile": true, "allowEntity": true,
+      "fields": [
+        { "id": "fullName", "type": "text", "label": "Full name (as per ID)", "required": true, "autofillFrom": "profile.fullName", "validation": { "minLength": 3, "maxLength": 120 } },
+        { "id": "relation", "type": "select", "label": "Relation", "required": true, "options": [ { "value": "S/o", "label": "Son of" }, { "value": "D/o", "label": "Daughter of" }, { "value": "W/o", "label": "Wife of" } ], "autofillFrom": "profile.relationType" },
+        { "id": "relationName", "type": "text", "label": "Father's / Husband's name", "required": true, "autofillFrom": "profile.relationName" },
+        { "id": "age", "type": "number", "label": "Age", "required": true, "validation": { "min": 18, "max": 120 } },
+        { "id": "address", "type": "address", "label": "Permanent address", "required": true, "autofillFrom": "profile.address" },
+        { "id": "phone", "type": "phone", "label": "Mobile number", "required": true, "autofillFrom": "profile.phone" },
+        { "id": "pan", "type": "pan", "label": "PAN (optional; needed if annual rent > ₹1 lakh for tenant's HRA claim)", "pii": true }
+      ]
+    },
+    {
+      "role": "TENANT", "label": "Tenant", "min": 1, "max": 4,
+      "otpRequired": true, "autofillFromProfile": true,
+      "fields": [
+        { "id": "fullName", "type": "text", "label": "Full name (as per ID)", "required": true, "validation": { "minLength": 3, "maxLength": 120 } },
+        { "id": "relation", "type": "select", "label": "Relation", "required": true, "options": [ { "value": "S/o", "label": "Son of" }, { "value": "D/o", "label": "Daughter of" }, { "value": "W/o", "label": "Wife of" } ] },
+        { "id": "relationName", "type": "text", "label": "Father's / Husband's name", "required": true },
+        { "id": "age", "type": "number", "label": "Age", "required": true, "validation": { "min": 18, "max": 120 } },
+        { "id": "address", "type": "address", "label": "Permanent address", "required": true },
+        { "id": "phone", "type": "phone", "label": "Mobile number (OTP will be sent)", "required": true },
+        { "id": "aadhaarLast4", "type": "aadhaarLast4", "label": "Aadhaar — last 4 digits only", "pii": true }
+      ]
+    },
+    {
+      "role": "WITNESS", "label": "Witness", "min": 0, "max": 2,
+      "otpRequired": false,
+      "fields": [
+        { "id": "fullName", "type": "text", "label": "Full name", "required": true },
+        { "id": "address", "type": "address", "label": "Address", "required": true },
+        { "id": "phone", "type": "phone", "label": "Mobile number", "required": true }
+      ]
+    }
+  ],
+
+  "sections": [
+    {
+      "id": "property",
+      "title": "Property details",
+      "fields": [
+        { "id": "pincode", "type": "pincode", "label": "Property pincode", "required": true, "hint": "We use this to find the state, district, Sub-Registrar office and stamp duty.", "validation": { "pattern": "^[1-9][0-9]{5}$", "message": "Enter a valid 6-digit pincode" } },
+        { "id": "address", "type": "textarea", "label": "Full property address (house no., floor, building, street, locality, city)", "required": true, "validation": { "minLength": 15 } },
+        { "id": "configuration", "type": "select", "label": "Configuration", "required": true, "options": [ { "value": "1RK", "label": "1 RK" }, { "value": "1BHK", "label": "1 BHK" }, { "value": "2BHK", "label": "2 BHK" }, { "value": "3BHK", "label": "3 BHK" }, { "value": "4BHK+", "label": "4 BHK or more" }, { "value": "INDEPENDENT_HOUSE", "label": "Independent house" } ] },
+        { "id": "furnishing", "type": "radio", "label": "Furnishing", "required": true, "options": [ { "value": "UNFURNISHED", "label": "Unfurnished" }, { "value": "SEMI_FURNISHED", "label": "Semi-furnished" }, { "value": "FULLY_FURNISHED", "label": "Fully furnished" } ] },
+        {
+          "id": "fixtures", "type": "repeater", "label": "Fixtures & fittings handed over",
+          "showIf": { "field": "property.furnishing", "op": "neq", "value": "UNFURNISHED" },
+          "itemFields": [
+            { "id": "item", "type": "text", "label": "Item", "required": true },
+            { "id": "quantity", "type": "number", "label": "Qty", "required": true, "validation": { "min": 1 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terms",
+      "title": "Rent & terms",
+      "fields": [
+        { "id": "startDate", "type": "date", "label": "Tenancy start date", "required": true },
+        { "id": "termMonths", "type": "number", "label": "Term (months)", "required": true, "default": 11, "validation": { "min": 1, "max": 11, "message": "Terms above 11 months need a registered lease deed" } },
+        { "id": "monthlyRent", "type": "money", "label": "Monthly rent (₹)", "required": true, "validation": { "min": 100000, "max": 1000000000 } },
+        { "id": "securityDeposit", "type": "money", "label": "Refundable security deposit (₹)", "required": true, "validation": { "min": 0 } },
+        { "id": "rentDueDay", "type": "number", "label": "Rent due on or before day of month", "required": true, "default": 5, "validation": { "min": 1, "max": 28 } },
+        { "id": "maintenanceIncluded", "type": "checkbox", "label": "Society maintenance included in rent", "default": true },
+        { "id": "maintenanceAmount", "type": "money", "label": "Monthly maintenance payable by tenant (₹)", "showIf": { "field": "terms.maintenanceIncluded", "op": "falsy" } },
+        { "id": "lockInMonths", "type": "number", "label": "Lock-in period (months)", "default": 0, "validation": { "min": 0, "max": 11 } },
+        { "id": "noticePeriodMonths", "type": "number", "label": "Notice period (months)", "required": true, "default": 1, "validation": { "min": 1, "max": 3 } },
+        { "id": "renewalEscalationPercent", "type": "percent", "label": "Rent increase on renewal (%)", "default": 5, "validation": { "min": 0, "max": 20 } },
+        { "id": "executionPlace", "type": "text", "label": "Place of execution (city)", "required": true, "autofillFrom": "profile.city" }
+      ]
+    }
+  ],
+
+  "pincodeBinding": {
+    "fieldPath": "property.pincode",
+    "derive": ["state", "district", "sro", "areaType", "postOffice", "stampRates", "registrationFee"],
+    "requireSroConfirmation": true,
+    "lockStateToJurisdiction": true
+  },
+
+  "stampDuty": {
+    "inputs": {
+      "monthlyRentPaise": "terms.monthlyRent",
+      "securityDepositPaise": "terms.securityDeposit",
+      "termMonths": "terms.termMonths",
+      "annualEscalationBps": "terms.renewalEscalationPercent"
+    },
+    "dutyPayerRole": "TENANT",
+    "userOverrideAllowed": false
+  },
+
+  "eStamp": {
+    "required": true,
+    "firstPartyRole": "LANDLORD",
+    "secondPartyRole": "TENANT",
+    "dutyPaidByRole": "TENANT",
+    "purchasedByRole": "TENANT",
+    "descriptionOfDocument": "Rent Agreement",
+    "propertyDescriptionTemplate": "{{form.property.address}} - {{pincodeData.pincode}}",
+    "articleCodes": { "DL": "Article 35 (a)(i) Lease", "HR": "Article 35 Lease", "KA": "Article 30 (a)(i) Lease", "*": "Lease" },
+    "fulfilmentModes": ["DIGITAL_SELF_PRINT", "ACC_PRINT_COURIER"],
+    "placement": {
+      "certificateAsFirstPage": true,
+      "footerText": "E-Stamp Certificate No. {{eStamp.certificateNo}} | Ref {{referenceNo}} | Page {{page}} of {{pages}}",
+      "qrOnEveryPage": true
+    }
+  },
+
+  "verification": {
+    "requiredRoles": ["TENANT"],
+    "optionalRoles": ["LANDLORD"],
+    "channels": ["SMS", "WHATSAPP"],
+    "otpLength": 6,
+    "otpTtlSeconds": 300,
+    "maxAttempts": 5,
+    "blockGenerationUntilVerified": true,
+    "reverifyIfPhoneChanged": true,
+    "consentTextVersion": "party-otp-consent/2026-10"
+  },
+
+  "body": {
+    "preamble": "This RENT AGREEMENT is made and executed at {{form.terms.executionPlace}} on this {{longDate executionDate}}\n\nBETWEEN\n\n{{partyDescriptions parties.LANDLORD}}, hereinafter jointly and severally called the \"LANDLORD\" (which expression shall, unless repugnant to the context, include their legal heirs, successors, executors and assigns) of the FIRST PART;\n\nAND\n\n{{partyDescriptions parties.TENANT}}, hereinafter jointly and severally called the \"TENANT\" (which expression shall, unless repugnant to the context, include their legal heirs and permitted assigns) of the SECOND PART.",
+    "recitals": [
+      { "id": "ownership", "text": "WHEREAS the Landlord is the lawful owner of and otherwise well and sufficiently entitled to the residential premises being a {{form.property.configuration}} ({{lower form.property.furnishing}}) situated at {{form.property.address}}, PIN {{pincodeData.pincode}}, District {{pincodeData.district}}, {{pincodeData.stateName}} (hereinafter the \"Premises\")." },
+      { "id": "intent", "text": "AND WHEREAS the Tenant has approached the Landlord to take the Premises on rent for residential purposes and the Landlord has agreed to let out the same on the terms and conditions hereinafter appearing." }
+    ],
+    "clauses": [
+      { "id": "term", "heading": "Term", "text": "The tenancy shall be for a period of {{form.terms.termMonths}} ({{numberWords form.terms.termMonths}}) months commencing from {{longDate form.terms.startDate}} and ending on {{longDate tenancyEndDate}}, unless terminated earlier in accordance with this Agreement." },
+      { "id": "rent", "heading": "Rent", "text": "The Tenant shall pay to the Landlord a monthly rent of {{inr form.terms.monthlyRent}}{{#if form.terms.maintenanceIncluded}}, inclusive of society maintenance charges{{/if}}, in advance on or before the {{ordinal form.terms.rentDueDay}} day of each English calendar month, by bank transfer / UPI to the account designated in writing by the Landlord." },
+      { "id": "maintenance", "heading": "Maintenance charges", "showIf": { "field": "terms.maintenanceIncluded", "op": "falsy" }, "text": "In addition to the rent, the Tenant shall pay society maintenance charges of {{inr form.terms.maintenanceAmount}} per month." },
+      { "id": "deposit", "heading": "Security deposit", "text": "The Tenant has paid / shall pay to the Landlord an interest-free refundable security deposit of {{inr form.terms.securityDeposit}}. The Landlord shall refund the deposit at the time the Tenant hands over vacant and peaceful possession of the Premises, after deducting only unpaid rent, unpaid utility charges and the cost of repairing damage beyond normal wear and tear, with written particulars of every deduction." },
+      { "id": "utilities", "heading": "Utilities", "text": "Charges for electricity, water (as per meter or actual consumption), piped gas, internet and DTH used during the tenancy shall be borne and paid by the Tenant directly to the authorities / providers concerned. Property tax shall be borne by the Landlord." },
+      { "id": "use", "heading": "Use of premises", "text": "The Premises shall be used by the Tenant and the members of the Tenant's family strictly for residential purposes and for no commercial, illegal or immoral purpose. The Tenant shall abide by the bye-laws of the housing society / resident welfare association." },
+      { "id": "sublet", "heading": "No sub-letting", "text": "The Tenant shall not sub-let, assign or part with possession of the Premises or any part thereof in any manner whatsoever without the prior written consent of the Landlord." },
+      { "id": "repairs", "heading": "Repairs", "text": "Day-to-day minor repairs (such as fuses, taps, bulbs and washers) shall be carried out by the Tenant at the Tenant's cost. Structural repairs, seepage and major repairs not caused by the Tenant's negligence shall be the responsibility of the Landlord." },
+      { "id": "alterations", "heading": "Alterations", "text": "The Tenant shall not make any structural additions or alterations to the Premises without the prior written consent of the Landlord." },
+      { "id": "inspection", "heading": "Inspection", "text": "The Landlord or the Landlord's authorised representative may inspect the Premises at a reasonable time with at least 24 (twenty-four) hours' prior notice to the Tenant." },
+      { "id": "lockin", "heading": "Lock-in period", "showIf": { "field": "terms.lockInMonths", "op": "gt", "value": 0 }, "text": "Neither party shall terminate this Agreement during the first {{form.terms.lockInMonths}} months of the term (the \"Lock-in Period\"), save for material breach. If the Tenant vacates during the Lock-in Period, the Tenant shall pay rent for the unexpired portion of the Lock-in Period." },
+      { "id": "termination", "heading": "Termination", "text": "Either party may terminate this Agreement {{#if (gt form.terms.lockInMonths 0)}}after the Lock-in Period {{/if}}by giving {{form.terms.noticePeriodMonths}} ({{numberWords form.terms.noticePeriodMonths}}) month(s) prior notice in writing to the other party, or rent in lieu thereof." },
+      { "id": "renewal", "heading": "Renewal", "text": "This Agreement may be renewed for a further term by mutual written consent, by executing a fresh agreement on fresh stamp paper, at a rent enhanced by {{form.terms.renewalEscalationPercent}}% over the last paid rent unless otherwise agreed." },
+      { "id": "handover", "heading": "Handover", "text": "On expiry or earlier termination the Tenant shall hand over vacant and peaceful possession of the Premises to the Landlord in the same condition in which it was let out, reasonable wear and tear excepted, together with all keys and the fixtures and fittings listed in the Schedule." },
+      { "id": "policeVerification", "heading": "Tenant verification", "states": ["DL", "HR"], "text": "The Landlord and the Tenant shall complete tenant verification with the local police station as required by orders in force in {{pincodeData.stateName}}, and the Tenant shall furnish the identity documents required for that purpose." },
+      { "id": "stampRegistration", "heading": "Stamp duty", "text": "The stamp duty on this Agreement, amounting to {{inr eStamp.stampDutyPaise}}, has been paid by {{eStamp.dutyPaidBy}} vide e-Stamp Certificate No. {{eStamp.certificateNo}} dated {{longDate eStamp.issuedAt}}. This Agreement is for a term not exceeding eleven months and the parties have not opted to register it." },
+      { "id": "law", "heading": "Governing law and jurisdiction", "text": "This Agreement shall be governed by the laws of India. The courts at {{pincodeData.district}}, {{pincodeData.stateName}} shall have exclusive jurisdiction over all disputes arising out of this Agreement." },
+      { "id": "entire", "heading": "Entire agreement", "text": "This Agreement constitutes the entire agreement between the parties and supersedes all prior discussions. Any amendment shall be valid only if made in writing and signed by both parties." }
+    ],
+    "schedules": [
+      { "id": "fixtures", "heading": "Schedule — Fixtures and fittings", "showIf": { "field": "property.furnishing", "op": "neq", "value": "UNFURNISHED" }, "text": "{{#each form.property.fixtures}}{{inc @index}}. {{item}} — {{quantity}}\n{{/each}}" }
+    ]
+  },
+
+  "signatureBlocks": [
+    { "role": "LANDLORD", "caption": "LANDLORD", "repeatForEachParty": true, "showPhotoBox": false, "showVerifiedBadge": true },
+    { "role": "TENANT", "caption": "TENANT", "repeatForEachParty": true, "showPhotoBox": true, "showVerifiedBadge": true },
+    { "role": "WITNESS", "caption": "WITNESS", "repeatForEachParty": true, "showVerifiedBadge": false }
+  ],
+
+  "output": {
+    "formats": ["PDF", "DOCX"],
+    "pageSize": "A4",
+    "marginsMm": { "top": 25, "bottom": 25, "left": 30, "right": 20 },
+    "watermarkUntilStamped": "DRAFT — NOT STAMPED",
+    "fileNameTemplate": "Rent-Agreement-{{referenceNo}}"
+  },
+
+  "disclaimer": {
+    "text": "LegalKart is a document-preparation platform and is not a law firm. This document is generated from a standard template using the information you provided and does not constitute legal advice. Stamp duty and registration requirements vary by state and are subject to change. We strongly recommend that you have this document reviewed by an advocate before signing. OTP verification confirms only that a party controls the mobile number entered; it is not identity verification.",
+    "requireAcknowledgement": true,
+    "printOnDocument": false
+  }
+}

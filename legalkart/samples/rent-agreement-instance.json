@@ -1,0 +1,159 @@
+{
+  "documentId": "386f17ff-3fa7-4329-b2b8-e00eec65a7a2",
+  "referenceNo": "LK-2026-000001",
+  "template": {
+    "templateKey": "rent-agreement.residential",
+    "version": "1.0.0"
+  },
+  "status": "GENERATED",
+  "form": {
+    "property": {
+      "address": "Flat 402, Tower B, Palm Residency, Sector 12, Gurugram, Haryana",
+      "configuration": "2BHK",
+      "furnishing": "SEMI_FURNISHED",
+      "fixtures": [
+        {
+          "item": "Ceiling fan",
+          "quantity": 4
+        },
+        {
+          "item": "Air conditioner (split)",
+          "quantity": 2
+        },
+        {
+          "item": "Geyser",
+          "quantity": 2
+        }
+      ],
+      "pincode": "122001"
+    },
+    "terms": {
+      "startDate": "2026-11-01",
+      "termMonths": 11,
+      "monthlyRent": 2500000,
+      "securityDeposit": 5000000,
+      "rentDueDay": 5,
+      "maintenanceIncluded": true,
+      "lockInMonths": 6,
+      "noticePeriodMonths": 1,
+      "renewalEscalationPercent": 5,
+      "executionPlace": "Gurugram"
+    }
+  },
+  "parties": [
+    {
+      "partyId": "c996fc08-57f0-4e2a-a8c3-9c648ab12101",
+      "role": "LANDLORD",
+      "sequence": 1,
+      "fullName": "Rajesh Kumar",
+      "relation": "S/o",
+      "relationName": "Shri Ram Kumar",
+      "age": 52,
+      "address": "H.No. 118, Sector 14, Gurugram, Haryana 122001",
+      "phoneMasked": "+91******0001",
+      "verification": {
+        "required": false,
+        "status": "NOT_REQUIRED"
+      }
+    },
+    {
+      "partyId": "263cdddd-10e2-4c03-8beb-f3fa260032d4",
+      "role": "TENANT",
+      "sequence": 1,
+      "fullName": "Asha Rao",
+      "relation": "D/o",
+      "relationName": "Shri K. Rao",
+      "age": 29,
+      "address": "12 MG Road, Bengaluru, Karnataka 560001",
+      "phoneMasked": "+91******0002",
+      "verification": {
+        "required": true,
+        "status": "VERIFIED",
+        "channel": "SMS",
+        "verifiedAt": "2026-10-16T23:24:15.060Z",
+        "verificationId": "857e738e-b291-44e2-be8a-4aebd2ae1591",
+        "consentTextVersion": "party-otp-consent/2026-10"
+      }
+    },
+    {
+      "partyId": "40a63d42-c56f-43ed-bdc5-16e285cffaec",
+      "role": "WITNESS",
+      "sequence": 1,
+      "fullName": "Vikram Singh",
+      "address": "Sector 15, Gurugram",
+      "phoneMasked": "+91******0003",
+      "verification": {
+        "required": false,
+        "status": "NOT_REQUIRED"
+      }
+    }
+  ],
+  "pincodeData": {
+    "pincode": "122001",
+    "postOffice": "Gurgaon H.O",
+    "stateCode": "HR",
+    "stateName": "Haryana",
+    "district": "Gurugram",
+    "districtLgdCode": null,
+    "areaType": "URBAN",
+    "sro": {
+      "code": "HR-GGN-GURGAON",
+      "name": "Sub-Registrar Gurugram"
+    },
+    "resolution": {
+      "confidence": 70,
+      "userConfirmed": true,
+      "candidates": 2
+    }
+  },
+  "dutyQuote": {
+    "stateCode": "HR",
+    "lines": [
+      {
+        "chargeType": "STAMP_DUTY",
+        "amountPaise": 487500,
+        "basis": "AVG_ANNUAL_RENT_PLUS_DEPOSIT",
+        "baseAmountPaise": 32500000,
+        "rateBps": 150,
+        "rateId": 2,
+        "articleRef": "Lease ≤ 5 yr",
+        "explanation": "1.5% of average annual rent ₹2,75,000 + deposit ₹50,000",
+        "payableAt": "ESTAMP"
+      }
+    ],
+    "totalGovtPaise": 487500,
+    "estampAmountPaise": 487500,
+    "quoteHash": "c297937dc9aa2c9a2e01c7d3d05c3aaa1a4c2e9f667987e4b4ed978fe8610d65",
+    "quotedAt": "2026-10-16T23:24:15.061Z",
+    "verifiedRates": false
+  },
+  "verification": {
+    "allRequiredVerified": true,
+    "requiredRoles": [
+      "TENANT"
+    ],
+    "pendingPartyIds": []
+  },
+  "eStamp": {
+    "transactionId": "f879e490-3d8e-4e8a-bfd2-fcce14c3ef26",
+    "status": "ISSUED",
+    "provider": "SHCIL_SANDBOX",
+    "fulfilmentMode": "DIGITAL_SELF_PRINT",
+    "certificateNo": "IN-HR64321165522811V",
+    "uniqueDocReference": "SUBIN-HRSHCIL1165522811V",
+    "issuedAt": "2026-10-16T23:24:15.063Z",
+    "accCode": "HR-SBX-ACC-001",
+    "articleCode": "Article 35 Lease",
+    "descriptionOfDocument": "Rent Agreement",
+    "propertyDescription": "Flat 402, Tower B, Palm Residency, Sector 12, Gurugram, Haryana - 122001",
+    "considerationPaise": 0,
+    "stampDutyPaise": 487500,
+    "firstParty": "Rajesh Kumar",
+    "secondParty": "Asha Rao",
+    "dutyPaidBy": "Asha Rao",
+    "purchasedBy": "Asha Rao",
+    "verificationUrl": "https://estamp-verify.example.invalid/IN-HR64321165522811V"
+  },
+  "generatedAt": "2026-10-16T23:24:16.162Z",
+  "outputSha256": "09d054f090961760fc2b7b5200ce0815bb84db1700c8730cd3ef2374a7cc8b4b"
+}
