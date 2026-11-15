@@ -267,14 +267,17 @@ export class RentAgreementService {
   // ----------------------------------------------------------- views
   partyView(p: Party) {
     return {
-      id: p.id, role: p.role, sequence: p.sequence, fullName: p.fullName,
-      phoneMasked: `+91******${p.phoneE164.slice(-4)}`, otpRequired: p.otpRequired, isVerified: p.isVerified,
+      // The owner entered these numbers, so the owner sees them in full.
+      id: p.id, role: p.role, sequence: p.sequence, fullName: p.fullName, phoneE164: p.phoneE164,
+      phoneMasked: `+91******${p.phoneE164.slice(-4)}`, details: p.details, otpRequired: p.otpRequired,
+      isVerified: p.isVerified, verifiedAt: p.verifiedAt?.toISOString() ?? null,
     };
   }
 
   documentView(d: DocumentRecord) {
     return {
-      id: d.id, referenceNo: d.referenceNo, status: d.status, pincodeData: d.pincodeData, form: d.formData,
+      id: d.id, referenceNo: d.referenceNo, status: d.status, propertyPincode: d.propertyPincode, stateCode: d.stateCode,
+      pincodeData: d.pincodeData, formData: d.formData,
       certificateNo: d.certificateNo, needsRegeneration: d.needsRegeneration,
       createdAt: d.createdAt.toISOString(), updatedAt: d.updatedAt.toISOString(),
     };

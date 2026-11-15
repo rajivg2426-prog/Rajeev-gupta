@@ -37,7 +37,7 @@ function FileButtons({ g }: { g: GenerateResponse }) {
       <Text className="text-body font-bold text-ink">Reference {g.referenceNo}</Text>
       <Muted>{g.certificateNo ? `E-stamp certificate ${g.certificateNo}` : "No certificate number: attach the e-stamp before signing."}</Muted>
       <Text className="text-caption text-ink-muted" selectable>
-        SHA-256 {g.sha256}
+        {g.sha256 ? `SHA-256 ${g.sha256}` : ""}
       </Text>
       {g.files.pdf ? (
         <Button title="Download / share PDF" loading={dl.isPending && dl.variables?.format === "pdf"} onPress={() => dl.mutate({ path: g.files.pdf!, format: "pdf" })} />

@@ -140,7 +140,8 @@ export interface AgreementDocument {
   propertyPincode: string | null;
   stateCode: string | null;
   formData: FormData;
-  certificateNo?: string | null;
+  certificateNo: string | null;
+  needsRegeneration: boolean;
   createdAt: string;
   updatedAt: string;
   [key: string]: unknown;
@@ -148,11 +149,11 @@ export interface AgreementDocument {
 
 export interface Party {
   id: string;
-  documentId: string;
   role: PartyRole;
   sequence: number;
   fullName: string;
   phoneE164: string;
+  phoneMasked: string;
   details: Record<string, unknown>;
   otpRequired: boolean;
   isVerified: boolean;
@@ -231,7 +232,9 @@ export type FileFormat = "pdf" | "docx";
 
 export interface GenerateResponse {
   referenceNo: string;
-  sha256: string;
+  status: DocumentStatus;
+  /** null when the server could not render a PDF (no Chromium); the DOCX is always there. */
+  sha256: string | null;
   certificateNo: string | null;
   files: { pdf: string | null; docx: string };
 }
