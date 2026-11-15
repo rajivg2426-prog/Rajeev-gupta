@@ -14,14 +14,9 @@ export type DutyBasis =
 export type VerificationChannel = "SMS" | "WHATSAPP" | "VOICE";
 export type VerificationStatus = "PENDING" | "SENT" | "VERIFIED" | "FAILED" | "EXPIRED" | "LOCKED";
 
-export type DocumentStatus =
-  | "DRAFT" | "AWAITING_VERIFICATION" | "READY_FOR_PAYMENT" | "PAYMENT_PENDING" | "PAID"
-  | "ESTAMP_PROCESSING" | "ESTAMP_ISSUED" | "GENERATED" | "CANCELLED" | "FAILED";
-
-export type EStampStatus =
-  | "INITIATED" | "SUBMITTED" | "ISSUED" | "FULFILMENT_PENDING" | "DELIVERED" | "FAILED"
-  | "MANUAL_REVIEW" | "REFUND_REQUESTED" | "REFUNDED";
-export type EStampFulfilment = "DIGITAL_SELF_PRINT" | "ACC_PRINT_COURIER" | "ACC_PICKUP" | "FRANKING";
+// The customer buys the e-stamp themselves on the government portal (see
+// docs/SYSTEM-DESIGN.md), so there are no payment or purchase states.
+export type DocumentStatus = "DRAFT" | "AWAITING_VERIFICATION" | "READY_TO_STAMP" | "GENERATED";
 
 export interface PincodeRow {
   pincode: string;
@@ -120,6 +115,14 @@ export interface DocumentRecord {
   pincodeData: PincodeData | null;
   formData: Record<string, any>;
   dutyQuote: DutyQuote | null;
+  /** What to buy on the government portal; set when status reaches READY_TO_STAMP. */
+  stampDetails: StampDetails | null;
+  disclaimerAcceptedAt: Date | null;
+  /** Entered by the customer after buying on the portal. Format-checked only, never verified by us. */
+  certificateNo: string | null;
+  certificateAddedAt: Date | null;
+  /** True when the certificate changed after files were generated. */
+  needsRegeneration: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -158,46 +161,19 @@ export interface DutyQuote {
   verifiedRates: boolean;
 }
 
-export interface Payment {
-  id: string;
-  documentId: string;
-  gateway: "RAZORPAY";
-  gatewayOrderId: string;
-  gatewayPaymentId: string | null;
-  status: "CREATED" | "CAPTURED" | "FAILED" | "REFUND_PENDING" | "REFUNDED";
-  amountPaise: Paise;
-  govtDutyPaise: Paise;
-  vendorFeePaise: Paise;
-  serviceFeePaise: Paise;
-  gstPaise: Paise;
-  dutyQuoteHash: string;
+export interface StampDetailField {
+  key: string;
+  label: string;
+  value: string;
 }
 
-export interface EStampTransaction {
-  id: string;
-  documentId: string;
-  paymentId: string;
-  idempotencyKey: string;
-  provider: string;
-  providerRequestId: string | null;
-  status: EStampStatus;
-  fulfilmentMode: EStampFulfilment;
+/** Everything the customer needs to buy the right e-stamp on their state's portal. */
+export interface StampDetails {
   stateCode: string;
-  articleCode: string;
-  descriptionOfDocument: string;
-  propertyDescription: string;
-  considerationPaise: Paise;
-  stampDutyPaise: Paise;
-  firstPartyName: string;
-  secondPartyName: string;
-  dutyPaidBy: string;
-  purchasedBy: string;
-  certificateNo: string | null;
-  uniqueDocReference: string | null;
-  issuedAt: Date | null;
-  accCode: string | null;
-  certificatePdf: Uint8Array | null;
-  verificationUrl: string | null;
-  failureReason: string | null;
-  attemptCount: number;
+  dutyPaise: Paise;
+  lines: { chargeType: ChargeType; amountPaise: Paise; explanation: string; articleRef: string | null; payableAt: "ESTAMP" | "SRO" }[];
+  portal: { name: string; url: string; steps: string[] };
+  fields: StampDetailField[];
+  disclaimer: string;
+  quotedAt: string;
 }

@@ -3,7 +3,7 @@
 // Handlebars in plain-text mode; each output format does its own escaping.
 import Handlebars from "handlebars";
 import { formatInr, inrInWords, numberToWords } from "../money.ts";
-import type { DutyQuote, EStampTransaction, Party, PincodeData } from "../types.ts";
+import type { DutyQuote, Party, PincodeData } from "../types.ts";
 import { evaluate, type DocumentTemplate } from "./template.ts";
 
 const hb = Handlebars.create();
@@ -65,6 +65,15 @@ export interface RenderParty {
   verification: { required: boolean; status: string; channel?: string; verifiedAt?: string };
 }
 
+/** E-stamp facts printed in the agreement. certificateNo is null until the customer enters it. */
+export interface RenderStamp {
+  certificateNo: string | null;
+  stampDutyPaise: number;
+  dutyPaidBy: string;
+  firstParty: string;
+  secondParty: string;
+}
+
 export interface RenderInput {
   template: DocumentTemplate;
   referenceNo: string;
@@ -72,14 +81,16 @@ export interface RenderInput {
   parties: Party[];
   pincodeData: PincodeData;
   dutyQuote: DutyQuote | null;
-  eStamp: EStampTransaction | null;
+  stamp: RenderStamp | null;
+  /** false = watermarked draft preview; true = the agreement to print and sign. */
+  final: boolean;
   executionDate: Date;
 }
 
 export interface DocModel {
   title: string;
   referenceNo: string;
-  stamped: boolean;
+  final: boolean;
   watermark: string | null;
   preamble: string[];
   recitals: string[];
@@ -91,7 +102,7 @@ export interface DocModel {
 }
 
 export function buildContext(input: RenderInput) {
-  const { form, pincodeData, eStamp, parties, template } = input;
+  const { form, pincodeData, stamp, parties, template } = input;
   const required = new Set(template.verification.requiredRoles);
   const byRole: Record<string, RenderParty[]> = {};
   for (const p of parties) {
@@ -122,15 +133,7 @@ export function buildContext(input: RenderInput) {
     dutyQuote: input.dutyQuote,
     executionDate: input.executionDate,
     tenancyEndDate,
-    eStamp: eStamp && {
-      certificateNo: eStamp.certificateNo ?? "[e-stamp pending]",
-      issuedAt: eStamp.issuedAt,
-      stampDutyPaise: eStamp.stampDutyPaise,
-      dutyPaidBy: eStamp.dutyPaidBy,
-      firstParty: eStamp.firstPartyName,
-      secondParty: eStamp.secondPartyName,
-      provider: eStamp.provider,
-    },
+    eStamp: stamp,
   };
 }
 
@@ -141,7 +144,6 @@ export function renderDocument(input: RenderInput, verifiedChannel: (partyId: st
   const ctx = buildContext(input);
   const stateCode = input.pincodeData.stateCode;
   const include = (c: { showIf?: any; states?: string[] }) => evaluate(c.showIf, input.form) && (!c.states || c.states.includes(stateCode));
-  const stamped = !!input.eStamp?.certificateNo;
 
   const signatures: DocModel["signatures"] = [];
   for (const block of t.signatureBlocks) {
@@ -162,8 +164,8 @@ export function renderDocument(input: RenderInput, verifiedChannel: (partyId: st
   return {
     title: t.title.toUpperCase(),
     referenceNo: input.referenceNo,
-    stamped,
-    watermark: stamped ? null : t.output.watermarkUntilStamped ?? "DRAFT",
+    final: input.final,
+    watermark: input.final ? null : t.output.watermarkUntilStamped ?? "DRAFT",
     preamble: render(t.body.preamble, ctx).split(/\n{2,}/),
     recitals: (t.body.recitals ?? []).filter(include).map((c) => render(c.text, ctx)),
     clauses: t.body.clauses.filter(include).map((c, i) => ({ number: i + 1, heading: c.heading, text: render(c.text, ctx) })),

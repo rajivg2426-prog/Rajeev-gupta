@@ -1,10 +1,10 @@
-// REST API (Fastify). Auth is stubbed with an x-user-id header so the sample
-// runs standalone; production verifies a JWT from phone-OTP login instead and
-// adds @fastify/rate-limit on the OTP and pincode routes.
+// REST API (Fastify). Auth is stubbed with an x-user-id header for now;
+// production verifies a JWT from phone-OTP login instead and adds
+// @fastify/rate-limit on the OTP and pincode routes.
 import Fastify, { type FastifyReply, type FastifyRequest } from "fastify";
 import { z } from "zod";
 import type { Container } from "../container.ts";
-import { EStampError } from "../estamp/estampService.ts";
+import { HandoffError } from "../estamp/handoff.ts";
 import { OtpError } from "../otp/otpService.ts";
 import { PincodeError } from "../pincode/pincodeService.ts";
 import { FlowError } from "../rentAgreement/rentAgreementService.ts";
@@ -14,17 +14,17 @@ const phone = z.string().regex(/^\+91[6-9]\d{9}$/, "Use +91 followed by a 10-dig
 const role = z.enum(["LANDLORD", "TENANT", "WITNESS"]);
 
 const STATUS: Record<string, number> = {
-  NOT_FOUND: 404, FORBIDDEN: 403, INVALID_STATE: 409, VERIFICATION_PENDING: 409, NOT_STAMPED: 409, NOT_PAID: 409,
-  RATE_LIMITED: 429, RESEND_TOO_SOON: 429, BAD_SIGNATURE: 400, DELIVERY_FAILED: 502, NO_PROVIDER: 503,
+  NOT_FOUND: 404, FORBIDDEN: 403, INVALID_STATE: 409, VERIFICATION_PENDING: 409, CERTIFICATE_IN_USE: 409,
+  FORM_INCOMPLETE: 400, PARTY_MISSING: 400, DISCLAIMER_REQUIRED: 400, INVALID_CERTIFICATE: 400,
+  RATE_LIMITED: 429, RESEND_TOO_SOON: 429, DELIVERY_FAILED: 502, NO_PORTAL: 503,
 };
 
 export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
   const app = Fastify({ logger: opts.logger === false ? false : { redact: ["req.headers.authorization", "body.otp"] } });
   const files = new Map<string, { pdf?: Uint8Array; docx?: Uint8Array }>();
 
-  // Keep the raw body for webhook HMAC verification.
-  app.addContentTypeParser("application/json", { parseAs: "string" }, (req, body, done) => {
-    (req as FastifyRequest & { rawBody?: string }).rawBody = body as string;
+  // Accept an empty JSON body (e.g. POST /generate sent with a JSON content type).
+  app.addContentTypeParser("application/json", { parseAs: "string" }, (_req, body, done) => {
     try {
       done(null, body ? JSON.parse(body as string) : {});
     } catch (err) {
@@ -34,8 +34,8 @@ export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
 
   app.setErrorHandler((err: unknown, _req, reply) => {
     if (err instanceof z.ZodError) return reply.code(422).send({ code: "VALIDATION", issues: err.issues });
-    if (err instanceof FlowError || err instanceof OtpError || err instanceof PincodeError || err instanceof DutyError || err instanceof EStampError) {
-      const details = err instanceof FlowError ? err.details : err instanceof OtpError ? err.meta : undefined;
+    if (err instanceof FlowError || err instanceof OtpError || err instanceof PincodeError || err instanceof DutyError || err instanceof HandoffError) {
+      const details = err instanceof FlowError || err instanceof HandoffError ? err.details : err instanceof OtpError ? err.meta : undefined;
       return reply.code(STATUS[err.code] ?? 422).send({ code: err.code, message: err.message, details });
     }
     app.log.error(err);
@@ -65,7 +65,12 @@ export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
   app.post("/v1/rent-agreements", async (req, reply) => {
     const body = z.object({ pincode: z.string(), sroCode: z.string().optional() }).parse(req.body);
     const { document, resolution } = await c.rent.createDraft(userId(req), body);
-    return reply.code(201).send({ id: document.id, referenceNo: document.referenceNo, pincodeData: document.pincodeData, resolution });
+    return reply.code(201).send({ document: c.rent.documentView(document), resolution });
+  });
+
+  app.get("/v1/rent-agreements/:id", async (req: P) => {
+    ownDoc(req);
+    return c.rent.getDocument(req.params.id);
   });
 
   app.put("/v1/rent-agreements/:id/sro", async (req: P) => {
@@ -83,14 +88,14 @@ export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
     ownDoc(req);
     const body = z.object({ role, fullName: z.string().min(3), phoneE164: phone, details: z.record(z.string(), z.any()).optional() }).parse(req.body);
     const p = await c.rent.addParty(req.params.id, body);
-    return reply.code(201).send({ id: p.id, role: p.role, sequence: p.sequence, otpRequired: p.otpRequired, isVerified: p.isVerified });
+    return reply.code(201).send(c.rent.partyView(p));
   });
 
   app.patch("/v1/rent-agreements/:id/parties/:partyId", async (req: P<{ partyId: string }>) => {
     ownDoc(req);
     const { phoneE164 } = z.object({ phoneE164: phone }).parse(req.body);
     const p = await c.rent.updatePartyPhone(req.params.id, req.params.partyId, phoneE164);
-    return { id: p.id, isVerified: p.isVerified };
+    return c.rent.partyView(p);
   });
 
   app.post("/v1/rent-agreements/:id/parties/:partyId/otp", async (req: P<{ partyId: string }>) => {
@@ -106,42 +111,28 @@ export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
     return c.rent.verifyPartyOtp(req.params.id, req.params.verificationId, otp);
   });
 
-  app.post("/v1/rent-agreements/:id/quote", async (req: P) => {
-    ownDoc(req);
-    return c.rent.quote(req.params.id);
-  });
-
   app.get("/v1/rent-agreements/:id/preview", async (req: P, reply: FastifyReply) => {
     ownDoc(req);
     return reply.type("text/html; charset=utf-8").send(await c.rent.previewHtml(req.params.id));
   });
 
-  app.post("/v1/rent-agreements/:id/payments", async (req: P) => {
+  // What to buy on the government portal. The customer buys and pays there; we never do.
+  app.post("/v1/rent-agreements/:id/stamp-details", async (req: P) => {
     ownDoc(req);
-    return c.rent.createPayment(req.params.id);
+    const { acceptDisclaimer } = z.object({ acceptDisclaimer: z.boolean().default(false) }).parse(req.body ?? {});
+    return c.rent.createStampDetails(req.params.id, { acceptDisclaimer });
   });
 
-  app.post("/v1/rent-agreements/:id/payments/confirm", async (req: P) => {
+  app.get("/v1/rent-agreements/:id/stamp-details", async (req: P) => {
     ownDoc(req);
-    const body = z.object({ orderId: z.string(), paymentId: z.string(), signature: z.string() }).parse(req.body);
-    const payment = await c.rent.confirmPayment(req.params.id, body);
-    // Production: enqueue a BullMQ job instead of purchasing inline.
-    const tx = await c.rent.purchaseEStamp(req.params.id);
-    return { paymentStatus: payment.status, eStamp: { id: tx.id, status: tx.status, certificateNo: tx.certificateNo } };
+    return c.rent.getStampDetails(req.params.id);
   });
 
-  app.post("/v1/webhooks/razorpay", async (req, reply) => {
-    const sig = req.headers["x-razorpay-signature"];
-    const raw = (req as FastifyRequest & { rawBody?: string }).rawBody ?? "";
-    const result = await c.rent.handlePaymentWebhook(raw, typeof sig === "string" ? sig : "");
-    return reply.code(200).send(result);
-  });
-
-  app.post("/v1/rent-agreements/:id/estamp", async (req: P) => {
+  // Optional: the certificate number from the e-stamp the customer bought. Format-checked only.
+  app.put("/v1/rent-agreements/:id/certificate", async (req: P) => {
     ownDoc(req);
-    const { fulfilmentMode } = z.object({ fulfilmentMode: z.enum(["DIGITAL_SELF_PRINT", "ACC_PRINT_COURIER"]).default("DIGITAL_SELF_PRINT") }).parse(req.body ?? {});
-    const tx = await c.rent.purchaseEStamp(req.params.id, fulfilmentMode);
-    return { id: tx.id, status: tx.status, certificateNo: tx.certificateNo, provider: tx.provider };
+    const { certificateNo } = z.object({ certificateNo: z.string().min(1).max(64) }).parse(req.body);
+    return c.rent.setCertificate(req.params.id, certificateNo);
   });
 
   app.post("/v1/rent-agreements/:id/generate", async (req: P) => {
@@ -149,8 +140,10 @@ export function buildApp(c: Container, opts: { logger?: boolean } = {}) {
     const out = await c.rent.generate(req.params.id, { pdf: process.env.SKIP_PDF !== "1" });
     files.set(d.id, { pdf: out.pdf?.pdf, docx: out.docx });
     return {
+      referenceNo: d.referenceNo,
       status: d.status,
-      sha256: out.pdf?.sha256,
+      sha256: out.pdf?.sha256 ?? null,
+      certificateNo: d.certificateNo,
       files: {
         pdf: out.pdf ? `/v1/rent-agreements/${d.id}/files/pdf` : null,
         docx: `/v1/rent-agreements/${d.id}/files/docx`,

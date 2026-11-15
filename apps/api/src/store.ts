@@ -1,10 +1,7 @@
 // In-memory store so the sample runs with zero infrastructure.
 // Production swaps this for Postgres repositories over db/schema.sql; the
 // interface is deliberately the same shape (async, one method per query).
-import type {
-  DocumentRecord, EStampTransaction, Party, PartyVerification, Payment, PincodeRow,
-  PincodeSroLink, SroRow, StampRate,
-} from "./types.ts";
+import type { DocumentRecord, Party, PartyVerification, PincodeRow, PincodeSroLink, SroRow, StampRate } from "./types.ts";
 
 export interface ReferenceData {
   pincodes: PincodeRow[];
@@ -17,9 +14,6 @@ export class MemoryStore {
   documents = new Map<string, DocumentRecord>();
   parties = new Map<string, Party>();
   verifications = new Map<string, PartyVerification>();
-  payments = new Map<string, Payment>();
-  eStamps = new Map<string, EStampTransaction>();
-  webhookEvents = new Set<string>();
   audit: { at: Date; actor: string; action: string; entityId: string; meta: unknown }[] = [];
   private refSeq = 0;
 
@@ -59,11 +53,10 @@ export class MemoryStore {
   async verificationsForPhoneSince(phoneE164: string, since: Date) {
     return [...this.verifications.values()].filter((v) => v.phoneE164 === phoneE164 && v.createdAt >= since);
   }
-  async eStampForDocument(documentId: string) {
-    return [...this.eStamps.values()].find((e) => e.documentId === documentId && e.status !== "FAILED") ?? null;
-  }
-  async paymentByOrderId(orderId: string) {
-    return [...this.payments.values()].find((p) => p.gatewayOrderId === orderId) ?? null;
+  async documentWithCertificate(stateCode: string, certificateNo: string, exceptDocumentId: string) {
+    return [...this.documents.values()].find(
+      (d) => d.id !== exceptDocumentId && d.stateCode === stateCode && d.certificateNo === certificateNo,
+    ) ?? null;
   }
 
   log(actor: string, action: string, entityId: string, meta: unknown = {}) {

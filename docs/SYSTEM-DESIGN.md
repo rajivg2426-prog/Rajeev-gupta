@@ -36,9 +36,9 @@ The backend flow works end to end in sandbox mode (13 tests pass), but there is 
 | Auth | `x-user-id` header stub | Phone OTP login, JWT + refresh token |
 | Jobs | E-stamp bought and PDF rendered inside the HTTP request | BullMQ worker for PDF rendering and push |
 | Files | Generated PDF/DOCX held in an in-memory map | S3 with SSE-KMS, presigned links |
-| E-stamp | Buys a sandbox e-stamp after a fake payment ("NOT A VALID STAMP") | Remove the purchase: show what to buy, link to the government portal, optional certificate number |
+| E-stamp | Done: stamp details, portal handoff and optional certificate number | Confirm portal steps and certificate formats with one real purchase per state |
 | Rates | Illustrative seed rates | Advocate-verified rates; production refuses unverified |
-| Payments | Razorpay order and capture before stamping; refunds flagged but never run | Remove for launch; fee switch off (₹10 per document later) |
+| Payments | Done: removed | Re-add behind a switch when the ₹10 fee is enabled |
 | Ops | No console | Not needed at launch: no stamps or money handled |
 | Hardening | No rate limiting, no field encryption | `@fastify/rate-limit`, KMS envelope encryption of PII |
 
@@ -116,11 +116,11 @@ The backend stays a modular monolith: one Fastify API process plus one worker pr
 | 5 | Documents (orchestrator) | `documents`, `document_parties` | The status machine; calls every other service in order | Built; states change |
 | 6 | Verification (OTP) | `party_verifications` | Party OTP send and verify, throttles, WhatsApp → SMS fallback, consent log | Built, console provider |
 | 7 | Duty engine | `stamp_rates`, `circle_rates` | Rate selection, duty bases, rounding; tells the customer exactly what stamp to buy | Built |
-| 8 | E-stamp handoff | `estamp_portals`, certificate fields on `documents` | Per-state portal link and steps; builds the field list to enter on the portal; checks certificate number format | New; replaces purchase code |
+| 8 | E-stamp handoff | `estamp_portals`, certificate fields on `documents` | Per-state portal link and steps; builds the field list to enter on the portal; checks certificate number format | Built, in-memory |
 | 9 | Rendering | `document_outputs` | HTML → PDF (Chromium), footer with certificate number or "attach e-stamp" note, QR, DOCX, SHA-256 | Built, runs in request |
 | 10 | Storage | S3 bucket | Upload outputs, presigned download links | Not built (in-memory map) |
 | 11 | Notifications | device tokens | Push "Your agreement is ready", reminders to add a certificate | Not built |
-| 12 | Billing (off) | `payments` | ₹10 per-document fee via Razorpay, behind a switch that stays off | Exists for stamping; strip back |
+| 12 | Billing (off) | `payments` | ₹10 per-document fee via Razorpay, behind a switch that stays off | Removed; re-add when the fee is enabled |
 
 **Removed from today's code:** Razorpay capture before stamping, e-stamp vendor adapters (sandbox, aggregator, manual ops), purchase polling, refunds.
 
@@ -274,13 +274,13 @@ Work goes in three steps; each step ends with code merged and this doc updated. 
 **Step 3: backend, service by service**
 
 - [ ] Postgres + Drizzle migrations; replace `MemoryStore` (unblocks everything below)
-- [ ] Remove stamp purchase, Razorpay capture and refund code; keep payments behind an off switch
+- [x] Remove stamp purchase, Razorpay capture and refund code (billing to be re-added behind a switch when the fee is enabled)
 - [ ] Auth: phone OTP login, JWT, ownership checks
 - [ ] Pincode: import India Post data, curated SRO map for launch cities
 - [ ] Templates: store versions in the database
 - [ ] Verification: real MSG91 and WhatsApp adapters, DLR webhook
 - [ ] Duty engine: load verified rates, maker-checker rate edits
-- [ ] E-stamp handoff: per-state portal config, stamp details, certificate number entry and format check
+- [x] E-stamp handoff: per-state portal config, stamp details, certificate number entry and format check (in memory; moves to Postgres with the rest)
 - [ ] Rendering + storage: render worker, S3, presigned links, regenerate when a certificate is added
 - [ ] Notifications: push when ready, reminder to add a certificate
 - [ ] Hardening: rate limits, field encryption, observability

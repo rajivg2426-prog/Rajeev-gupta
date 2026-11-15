@@ -9,13 +9,13 @@ A mobile app for India that produces ready-to-sign property documents, starting 
 
 **Start with [docs/SYSTEM-DESIGN.md](docs/SYSTEM-DESIGN.md)**, the target architecture and plan. The editable source of that doc is a Claude Doc linked at its top.
 
-> The repo is mid-rebuild. `apps/api` still contains the older reference flow (in-app payment and sandbox e-stamp purchase); the system design describes what replaces it.
+> The repo is mid-rebuild: the API runs in memory with sandbox OTP, and the mobile app is being set up. See the execution plan in the system design.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
-| [`apps/api`](apps/api) | TypeScript/Fastify backend: pincode resolver, duty engine, OTP, documents, PDF/DOCX rendering |
+| [`apps/api`](apps/api) | TypeScript/Fastify backend: pincode resolver, duty engine, OTP, e-stamp handoff, PDF/DOCX rendering. Endpoints in its README |
 | `apps/mobile` | Expo app (coming next) |
 | [`packages/templates`](packages/templates) | Document templates and JSON Schemas for templates and filled documents |
 | [`packages/db`](packages/db) | PostgreSQL 16 schema and an illustrative seed |

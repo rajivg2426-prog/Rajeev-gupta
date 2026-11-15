@@ -1,11 +1,13 @@
 // Runs the whole Rent Agreement flow in sandbox mode and writes the outputs
-// to docs/samples/: stamped PDF, editable DOCX, and the instance snapshot JSON.
+// to docs/samples/: agreement PDF, editable DOCX, and the instance snapshot JSON.
+// The customer would buy the e-stamp on the government portal; the sample is
+// generated without a certificate number, so it carries the "attach the
+// e-stamp" note.
 //   npm run demo
 import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { buildContainer } from "../src/container.ts";
 import type { ConsoleOtpProvider } from "../src/otp/providers.ts";
-import type { FakeRazorpayGateway } from "../src/payments/razorpay.ts";
 import { sampleForm } from "../test/fixtures.ts";
 
 const out = fileURLToPath(new URL("../../../docs/samples/", import.meta.url));
@@ -25,14 +27,10 @@ await r.addParty(doc.id, { role: "WITNESS", fullName: "Vikram Singh", phoneE164:
 const sent = await r.sendPartyOtp(doc.id, tenant.id, "SMS");
 await r.verifyPartyOtp(doc.id, sent.verificationId, (c.otpProviders.SMS as ConsoleOtpProvider).outbox.get(tenant.phoneE164)!);
 
-const { quote, price } = await r.quote(doc.id);
-for (const l of quote.lines) console.log(`  ${l.chargeType}: ${l.explanation} = ₹${l.amountPaise / 100}`);
-console.log(`  Total payable: ₹${price.totalPaise / 100} (duty ₹${price.govtDutyPaise / 100} + fees ₹${(price.serviceFeePaise + price.vendorFeePaise) / 100} + GST ₹${price.gstPaise / 100})`);
-
-const order = await r.createPayment(doc.id);
-await r.confirmPayment(doc.id, { orderId: order.orderId, paymentId: "pay_DEMO1", signature: (c.gateway as FakeRazorpayGateway).sign(order.orderId, "pay_DEMO1") });
-const tx = await r.purchaseEStamp(doc.id);
-console.log(`E-stamp ${tx.status}: ${tx.certificateNo} via ${tx.provider}`);
+const details = await r.createStampDetails(doc.id, { acceptDisclaimer: true });
+for (const l of details.lines) console.log(`  ${l.chargeType}: ${l.explanation} = ₹${l.amountPaise / 100}`);
+console.log(`  Buy on: ${details.portal.name} (${details.portal.url})`);
+for (const f of details.fields) console.log(`    ${f.label}: ${f.value}`);
 
 const { pdf, docx, html } = await r.generate(doc.id, { pdf: true });
 writeFileSync(`${out}rent-agreement-sample.pdf`, pdf!.pdf);

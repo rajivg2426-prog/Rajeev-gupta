@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/document-template.schema.json",
   "templateKey": "rent-agreement.residential",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "documentType": "RENT_AGREEMENT",
   "title": "Residential Rent Agreement",
   "locale": "en-IN",
@@ -135,7 +135,7 @@
     "fulfilmentModes": ["DIGITAL_SELF_PRINT", "ACC_PRINT_COURIER"],
     "placement": {
       "certificateAsFirstPage": true,
-      "footerText": "E-Stamp Certificate No. {{eStamp.certificateNo}} | Ref {{referenceNo}} | Page {{page}} of {{pages}}",
+      "footerText": "{{#if eStamp.certificateNo}}E-Stamp Certificate No. {{eStamp.certificateNo}} (verify on the official portal){{else}}Attach the e-stamp certificate before signing{{/if}} | Ref {{referenceNo}} | Page {{page}} of {{pages}}",
       "qrOnEveryPage": true
     }
   },
@@ -174,7 +174,7 @@
       { "id": "renewal", "heading": "Renewal", "text": "This Agreement may be renewed for a further term by mutual written consent, by executing a fresh agreement on fresh stamp paper, at a rent enhanced by {{form.terms.renewalEscalationPercent}}% over the last paid rent unless otherwise agreed." },
       { "id": "handover", "heading": "Handover", "text": "On expiry or earlier termination the Tenant shall hand over vacant and peaceful possession of the Premises to the Landlord in the same condition in which it was let out, reasonable wear and tear excepted, together with all keys and the fixtures and fittings listed in the Schedule." },
       { "id": "policeVerification", "heading": "Tenant verification", "states": ["DL", "HR"], "text": "The Landlord and the Tenant shall complete tenant verification with the local police station as required by orders in force in {{pincodeData.stateName}}, and the Tenant shall furnish the identity documents required for that purpose." },
-      { "id": "stampRegistration", "heading": "Stamp duty", "text": "The stamp duty on this Agreement, amounting to {{inr eStamp.stampDutyPaise}}, has been paid by {{eStamp.dutyPaidBy}} vide e-Stamp Certificate No. {{eStamp.certificateNo}} dated {{longDate eStamp.issuedAt}}. This Agreement is for a term not exceeding eleven months and the parties have not opted to register it." },
+      { "id": "stampRegistration", "heading": "Stamp duty", "text": "The stamp duty on this Agreement{{#if eStamp}}, amounting to {{inr eStamp.stampDutyPaise}},{{/if}} {{#if eStamp.certificateNo}}has been paid by {{eStamp.dutyPaidBy}} vide e-Stamp Certificate No. {{eStamp.certificateNo}}, attached as the first page of this Agreement{{else}}is paid by way of an e-stamp certificate attached as the first page of this Agreement{{/if}}. This Agreement is for a term not exceeding eleven months and the parties have not opted to register it." },
       { "id": "law", "heading": "Governing law and jurisdiction", "text": "This Agreement shall be governed by the laws of India. The courts at {{pincodeData.district}}, {{pincodeData.stateName}} shall have exclusive jurisdiction over all disputes arising out of this Agreement." },
       { "id": "entire", "heading": "Entire agreement", "text": "This Agreement constitutes the entire agreement between the parties and supersedes all prior discussions. Any amendment shall be valid only if made in writing and signed by both parties." }
     ],

@@ -1,5 +1,6 @@
-// Output writers: HTML → PDF (headless Chromium), e-stamp certificate merge +
-// per-page footer/QR (pdf-lib), and an editable DOCX (docx).
+// Output writers: HTML → PDF (headless Chromium), per-page footer/QR
+// (pdf-lib), and an editable DOCX (docx). The customer prints and attaches the
+// e-stamp they bought on the government portal; we never merge a certificate.
 import { createHash } from "node:crypto";
 import {
   AlignmentType, BorderStyle, Document, Footer, Header, Packer, PageNumber, Paragraph, Table, TableCell, TableRow,
@@ -57,21 +58,17 @@ export async function htmlToPdf(html: string, executablePath = process.env.CHROM
 }
 
 /**
- * Final stamped PDF: [e-stamp certificate] + [agreement pages], with the
- * certificate number, page x/y and a verification QR on every agreement page.
+ * Final PDF: the agreement pages with the footer (certificate number, or a note
+ * to attach the e-stamp), page x/y and a verification QR on every page.
  */
-export async function assembleStampedPdf(
+export async function assemblePdf(
   bodyPdf: Uint8Array,
   doc: DocModel,
-  opts: { certificatePdf: Uint8Array | null; verifyUrl: string },
+  opts: { verifyUrl: string },
 ): Promise<{ pdf: Uint8Array; sha256: string }> {
   const out = await PDFDocument.create();
   out.setTitle(`${doc.title} ${doc.referenceNo}`);
   out.setProducer("LegalKart Paper Generator");
-  if (opts.certificatePdf) {
-    const cert = await PDFDocument.load(opts.certificatePdf);
-    for (const p of await out.copyPages(cert, cert.getPageIndices())) out.addPage(p);
-  }
   const body = await PDFDocument.load(bodyPdf);
   const bodyPages = await out.copyPages(body, body.getPageIndices());
   bodyPages.forEach((p) => out.addPage(p));

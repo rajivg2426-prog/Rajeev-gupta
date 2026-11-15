@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://legalkart.example/schemas/document-instance.schema.json",
   "title": "LegalKart Document Instance (render context)",
-  "description": "The fully-resolved data a template is rendered with: form answers, parties with OTP verification status, pincode-derived jurisdiction, frozen duty quote and the issued e-stamp certificate. Persisted as a snapshot next to every generated output so a document can be re-rendered byte-for-byte.",
+  "description": "The fully-resolved data a template is rendered with: form answers, parties with OTP verification status, pincode-derived jurisdiction, frozen duty quote and the e-stamp the customer bought on the government portal. Persisted as a snapshot next to every generated output so a document can be re-rendered byte-for-byte.",
   "type": "object",
   "additionalProperties": false,
   "required": ["documentId", "referenceNo", "template", "status", "form", "parties", "pincodeData", "dutyQuote", "verification", "eStamp", "generatedAt"],
@@ -13,7 +13,7 @@
       "type": "object", "additionalProperties": false, "required": ["templateKey", "version"],
       "properties": { "templateKey": { "type": "string" }, "version": { "type": "string" } }
     },
-    "status": { "enum": ["DRAFT", "AWAITING_VERIFICATION", "READY_FOR_PAYMENT", "PAYMENT_PENDING", "PAID", "ESTAMP_PROCESSING", "ESTAMP_ISSUED", "GENERATED", "CANCELLED", "FAILED"] },
+    "status": { "enum": ["DRAFT", "AWAITING_VERIFICATION", "READY_TO_STAMP", "GENERATED"] },
     "form": { "type": "object", "description": "Answers keyed by section id → field id. Money fields are integers in paise." },
 
     "parties": {
@@ -142,30 +142,16 @@
 
     "eStamp": {
       "type": ["object", "null"],
+      "description": "The e-stamp the customer buys themselves on the state's government portal. LegalKart never buys it; a certificate number, when present, was entered by the customer and is format-checked only.",
       "additionalProperties": false,
-      "required": ["transactionId", "status", "provider", "stampDutyPaise"],
+      "required": ["portal", "stampDutyPaise"],
       "properties": {
-        "transactionId": { "type": "string", "format": "uuid" },
-        "status": { "enum": ["INITIATED", "SUBMITTED", "ISSUED", "FULFILMENT_PENDING", "DELIVERED", "FAILED", "MANUAL_REVIEW", "REFUND_REQUESTED", "REFUNDED"] },
-        "provider": { "type": "string" },
-        "fulfilmentMode": { "enum": ["DIGITAL_SELF_PRINT", "ACC_PRINT_COURIER", "ACC_PICKUP", "FRANKING"] },
-        "certificateNo": { "type": "string", "description": "Unique certificate number / URN, e.g. IN-DL12345678901234X" },
-        "uniqueDocReference": { "type": "string" },
-        "issuedAt": { "type": "string", "format": "date-time" },
-        "accCode": { "type": "string" },
-        "articleCode": { "type": "string" },
-        "descriptionOfDocument": { "type": "string" },
-        "propertyDescription": { "type": "string" },
-        "considerationPaise": { "type": "integer", "minimum": 0 },
+        "portal": { "type": "string", "description": "Name of the government portal the customer was sent to." },
         "stampDutyPaise": { "type": "integer", "minimum": 0 },
-        "firstParty": { "type": "string" },
-        "secondParty": { "type": "string" },
-        "dutyPaidBy": { "type": "string" },
-        "purchasedBy": { "type": "string" },
-        "verificationUrl": { "type": "string", "format": "uri" }
+        "certificateNo": { "type": "string", "description": "Certificate number entered by the customer, e.g. IN-DL12345678901234A" },
+        "certificateAddedAt": { "type": "string", "format": "date-time" }
       },
-      "if": { "properties": { "status": { "enum": ["ISSUED", "FULFILMENT_PENDING", "DELIVERED"] } } },
-      "then": { "required": ["certificateNo", "issuedAt"] }
+      "dependentRequired": { "certificateNo": ["certificateAddedAt"] }
     }
   }
 }
