@@ -1,5 +1,6 @@
 import type { Href } from "expo-router";
 import type { DocumentStatus } from "../api/types";
+import { documentStatus } from "../theme/tokens";
 
 /** Every status maps to a screen, so reopening the app lands on the right step. */
 export function stepForStatus(id: string, status: DocumentStatus): Href {
@@ -15,9 +16,7 @@ export function stepForStatus(id: string, status: DocumentStatus): Href {
   }
 }
 
-export const STATUS_LABEL: Record<DocumentStatus, string> = {
-  DRAFT: "Draft",
-  AWAITING_VERIFICATION: "Waiting for tenant OTP",
-  READY_TO_STAMP: "Ready to stamp",
-  GENERATED: "Ready to download",
-};
+/** User-facing status labels come from the design tokens (they say what happens next). */
+export const STATUS_LABEL: Record<DocumentStatus, string> = Object.fromEntries(
+  Object.entries(documentStatus).map(([k, v]) => [k, v.label]),
+) as Record<DocumentStatus, string>;

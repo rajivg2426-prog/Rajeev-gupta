@@ -1,14 +1,22 @@
 import "../../global.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
+import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ApiError } from "../api/client";
 import { Loading } from "../components/ui";
 import { useDraft } from "../state/draft";
 import { useSession } from "../state/session";
+import { FONT_ASSETS } from "../theme/fonts";
+import { usePalette } from "../theme/palette";
+
+// Keep the native splash up until the fonts are in, so text never flashes in a system font.
+SplashScreen.preventAutoHideAsync().catch(() => {});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,15 +41,26 @@ function useStoresHydrated() {
 
 export default function RootLayout() {
   const hydrated = useStoresHydrated();
+  const [fontsLoaded, fontError] = useFonts(FONT_ASSETS);
+  const fontsReady = fontsLoaded || !!fontError;
+  const p = usePalette();
+
+  useEffect(() => {
+    if (fontsReady) SplashScreen.hideAsync().catch(() => {});
+  }, [fontsReady]);
+
+  if (!fontsReady) return null;
+
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
-        <StatusBar style="dark" />
+        <StatusBar style="auto" />
         {hydrated ? (
-          <Stack screenOptions={{ headerBackButtonDisplayMode: "minimal" }}>
-            <Stack.Screen name="index" options={{ title: "LegalKart" }} />
-            <Stack.Screen name="login" options={{ title: "Sign in" }} />
-            <Stack.Screen name="profile" options={{ title: "Profile" }} />
+          // Every screen draws its own header (step header, back button) from the design.
+          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: p.canvas } }}>
+            <Stack.Screen name="index" options={{ title: "LegalKart", animation: "none" }} />
+            <Stack.Screen name="login" options={{ title: "Log in" }} />
+            <Stack.Screen name="profile" options={{ title: "Profile", animation: "none" }} />
             <Stack.Screen name="new" options={{ title: "New rent agreement" }} />
             <Stack.Screen name="agreement/[id]/property" options={{ title: "Property" }} />
             <Stack.Screen name="agreement/[id]/details" options={{ title: "Agreement details" }} />
@@ -53,7 +72,9 @@ export default function RootLayout() {
             <Stack.Screen name="agreement/[id]/done" options={{ title: "Done" }} />
           </Stack>
         ) : (
-          <Loading />
+          <View className="flex-1 bg-canvas justify-center">
+            <Loading />
+          </View>
         )}
       </QueryClientProvider>
     </SafeAreaProvider>

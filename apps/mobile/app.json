@@ -6,7 +6,7 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "in.legalkart.app"
@@ -30,7 +30,9 @@
       "expo-router",
       "expo-web-browser",
       "expo-sharing",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font",
+      "expo-splash-screen"
     ]
   }
 }

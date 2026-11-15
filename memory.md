@@ -79,9 +79,8 @@ These rules change only with the owner's decision. Record the decision in the sy
   - monorepo
   - government-portal e-stamp flow in the API (in-memory store, sandbox OTP)
   - Expo app wired to the API
-  - approved UI design saved in `design/ui/`
+  - approved UI design saved in `design/ui/` and ported into all app screens
 - **Next:**
-  - port the approved design into the app screens
   - Postgres + Drizzle
   - phone-OTP login
   - S3 file storage

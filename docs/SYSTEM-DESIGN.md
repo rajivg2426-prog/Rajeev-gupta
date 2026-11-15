@@ -264,10 +264,10 @@ Work goes in three steps; each step ends with code merged and this doc updated. 
 **Step 2: mobile app**
 
 - [x] Restructure the repo into the monorepo layout; remove the clinic site
-- [ ] Design system in an artifact: colours, type, buttons, inputs, cards, status chips
-- [ ] Design every screen of the journey in the artifact; iterate until approved
+- [x] Design system in an artifact: colours, type, buttons, inputs, cards, status chips
+- [x] Design every screen of the journey in the artifact; iterate until approved
 - [x] Scaffold the Expo app (Router, NativeWind, TanStack Query, typed API client), placeholder screens wired to the API
-- [ ] Port approved screens one by one, wired to the sandbox API
+- [x] Port approved screens one by one, wired to the sandbox API
 - [ ] Government portal handoff with copy buttons, OTP autofill, file download and share
 - [ ] EAS development build on Android and iOS
 

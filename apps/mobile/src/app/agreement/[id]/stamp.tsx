@@ -1,119 +1,134 @@
-import * as Clipboard from "expo-clipboard";
 import { router, useLocalSearchParams } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
-import { useState } from "react";
-import { Pressable, Text, View } from "react-native";
-import { isApiError } from "../../../api/client";
+import { View } from "react-native";
 import { formatInr } from "../../../api/money";
-import { useAgreement, useCreateStampDetails } from "../../../api/queries";
+import { useAgreement } from "../../../api/queries";
 import type { StampDetails } from "../../../api/types";
-import { Button, Card, Checkbox, ErrorBox, Loading, Muted, Screen, StepHeader } from "../../../components/ui";
+import { CopyRows, type CopyItem } from "../../../components/CopyRows";
+import {
+  BottomBar,
+  Button,
+  Caption,
+  Card,
+  EmptyState,
+  ErrorState,
+  Heading,
+  Loading,
+  Notice,
+  NumberedSteps,
+  Screen,
+  StepHeader,
+  Text,
+} from "../../../components/ui";
 
-function CopyRow({ label, value }: { label: string; value: string }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <View className="flex-row items-center gap-3 border-b border-line py-2">
-      <View className="flex-1">
-        <Text className="text-caption text-ink-muted">{label}</Text>
-        <Text className="text-body text-ink" selectable>
-          {value}
-        </Text>
-      </View>
-      <Pressable
-        accessibilityRole="button"
-        onPress={async () => {
-          await Clipboard.setStringAsync(value);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1500);
-        }}
-        className="rounded-card border border-brand px-3 py-1"
-      >
-        <Text className="text-brand">{copied ? "Copied" : "Copy"}</Text>
-      </Pressable>
-    </View>
-  );
+const host = (url: string) => url.replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/^www\./, "");
+
+/** Copy rows: show amounts formatted, copy them exactly as the API sends them (e.g. 4875). */
+function copyItems(s: StampDetails): CopyItem[] {
+  return s.fields.map((f) => {
+    const amount = /amount/i.test(f.key) && /^\d+(\.\d+)?$/.test(f.value);
+    return {
+      key: f.key,
+      label: amount ? `${f.label.replace(/\s*\(Rs\)$/, "")} · copies ${f.value}` : f.label,
+      value: f.value,
+      display: amount ? formatInr(Math.round(Number(f.value) * 100)) : undefined,
+      emphasis: f.key === "stampDutyAmount",
+    };
+  });
 }
 
-function StampView({ id, s }: { id: string; s: StampDetails }) {
+function StampView({ id, s, stateName }: { id: string; s: StampDetails; stateName: string }) {
+  const article = s.fields.find((f) => f.key === "article")?.value;
+  const payer = s.fields.find((f) => f.key === "stampDutyPaidBy")?.value;
+  const estampLines = s.lines.filter((l) => l.payableAt === "ESTAMP");
+  const sroLines = s.lines.filter((l) => l.payableAt === "SRO");
   return (
-    <>
-      <Card>
-        <Muted>Stamp duty to pay on the government portal</Muted>
-        <Text className="text-title font-bold text-ink">{formatInr(s.dutyPaise)}</Text>
-        {s.lines.map((l, i) => (
-          <View key={`${l.chargeType}-${i}`} className="gap-0.5 border-t border-line pt-2">
-            <View className="flex-row justify-between">
-              <Text className="text-body text-ink">{l.chargeType.replace(/_/g, " ")}</Text>
-              <Text className="text-body text-ink">{formatInr(l.amountPaise)}</Text>
-            </View>
-            <Text className="text-caption text-ink-muted">
+    <Screen
+      header={<StepHeader step={6} label="E-stamp" />}
+      footer={
+        <BottomBar>
+          <Button title="Open government portal" iconRight="external" onPress={() => void WebBrowser.openBrowserAsync(s.portal.url)} />
+          <Button variant="secondary" title="I've bought the e-stamp" onPress={() => router.push(`/agreement/${id}/certificate`)} />
+        </BottomBar>
+      }
+    >
+      <Heading
+        title="Buy the e-stamp"
+        body={`You buy it from the Government of ${stateName} and pay them directly. LegalKart doesn't sell stamps or take any payment.`}
+      />
+
+      <View className="rounded-xl bg-surface border border-line overflow-hidden">
+        <View className="p-4 gap-1 bg-primary-soft">
+          <Text className="text-label font-medium text-ink-2">Stamp duty to pay</Text>
+          <Text className="text-amount font-bold text-ink tabular">{formatInr(s.dutyPaise)}</Text>
+          {article ? <Text className="text-label text-ink-2">{article}</Text> : null}
+        </View>
+        <View className="p-4 gap-2">
+          <Text className="text-label font-semibold text-ink">How it's worked out</Text>
+          {estampLines.map((l, i) => (
+            <Text key={`${l.chargeType}-${i}`} className="text-label text-ink-2">
               {l.explanation}
-              {l.articleRef ? ` (${l.articleRef})` : ""} · pay at {l.payableAt === "ESTAMP" ? "e-stamp portal" : "Sub-Registrar Office"}
             </Text>
-          </View>
-        ))}
-      </Card>
+          ))}
+          {sroLines.map((l, i) => (
+            <Text key={`sro-${i}`} className="text-label text-ink-2">
+              {`${l.chargeType.replace(/_/g, " ").toLowerCase()}: ${formatInr(l.amountPaise)}, paid at the Sub-Registrar Office, not on the portal`}
+            </Text>
+          ))}
+          <Caption>
+            {payer ? `Paid by ${payer}. ` : ""}Calculated {new Date(s.quotedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}.
+          </Caption>
+        </View>
+      </View>
+
+      <Notice tone="warn">{`Enter exactly ${formatInr(s.dutyPaise)} on the portal. A lower amount leaves the agreement under-stamped.`}</Notice>
 
       <Card>
-        <Text className="text-body font-bold text-ink">Enter these on {s.portal.name}</Text>
-        {s.fields.map((f) => (
-          <CopyRow key={f.key} label={f.label} value={f.value} />
-        ))}
+        <View className="gap-0.5">
+          <Text className="text-heading font-semibold text-ink">On {s.portal.name}</Text>
+          <Text className="text-label text-ink-3">{host(s.portal.url)}</Text>
+        </View>
+        <NumberedSteps steps={s.portal.steps} />
       </Card>
 
-      <Card>
-        <Text className="text-body font-bold text-ink">Steps</Text>
-        {s.portal.steps.map((step, i) => (
-          <Text key={i} className="text-body text-ink">
-            {i + 1}. {step}
-          </Text>
-        ))}
-      </Card>
-
-      <Button title="Open government portal" onPress={() => WebBrowser.openBrowserAsync(s.portal.url)} />
-      <Muted>{s.disclaimer}</Muted>
-      <Muted>Quoted {new Date(s.quotedAt).toLocaleString()}</Muted>
-      <Button variant="secondary" title="I have the certificate number" onPress={() => router.push(`/agreement/${id}/certificate`)} />
-    </>
+      <CopyRows items={copyItems(s)} />
+      <Caption>Saved to this agreement. You can leave the app and come back any time.</Caption>
+    </Screen>
   );
 }
 
 export default function Stamp() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const agreement = useAgreement(id);
-  const create = useCreateStampDetails(id);
-  const [accepted, setAccepted] = useState(false);
+  const header = <StepHeader step={6} label="E-stamp" />;
 
-  if (agreement.isPending) return <Loading />;
-  if (agreement.isError) return <ErrorBox error={agreement.error} onRetry={() => agreement.refetch()} />;
+  if (agreement.isPending)
+    return (
+      <Screen header={header}>
+        <Loading />
+      </Screen>
+    );
+  if (agreement.isError)
+    return (
+      <Screen header={header}>
+        <ErrorState error={agreement.error} onRetry={() => agreement.refetch()} />
+      </Screen>
+    );
 
-  const stamp = create.data ?? agreement.data.stampDetails;
-  const err = create.error;
-  const fixRoute = isApiError(err, "VERIFICATION_PENDING")
-    ? { title: "Verify tenants", href: `/agreement/${id}/verify` as const }
-    : isApiError(err, "FORM_INCOMPLETE")
-      ? { title: "Complete the details", href: `/agreement/${id}/details` as const }
-      : isApiError(err, "PARTY_MISSING")
-        ? { title: "Add parties", href: `/agreement/${id}/parties` as const }
-        : null;
-
-  return (
-    <Screen>
-      <StepHeader step={5} title="Stamp details" />
-      {stamp ? (
-        <StampView id={id} s={stamp} />
-      ) : (
-        <>
-          <Muted>
-            LegalKart is not a law firm. We calculate the stamp duty from published state rates and show you what to enter on the
-            official e-stamp portal; you buy the stamp paper directly from the government.
-          </Muted>
-          <Checkbox label="I understand and want to see the stamp details" value={accepted} onChange={setAccepted} />
-          <ErrorBox error={err} />
-          {fixRoute ? <Button variant="secondary" title={fixRoute.title} onPress={() => router.push(fixRoute.href)} /> : null}
-          <Button title="Show stamp details" disabled={!accepted} loading={create.isPending} onPress={() => create.mutate()} />
-        </>
-      )}
-    </Screen>
-  );
+  const s = agreement.data.stampDetails;
+  if (!s)
+    return (
+      <Screen header={header}>
+        <EmptyState
+          icon="file"
+          title="Check the draft first"
+          body="The stamp duty is worked out after you check the draft and accept the disclaimer."
+          action={<Button size="md" title="Go to the draft" onPress={() => router.replace(`/agreement/${id}/preview`)} />}
+        />
+      </Screen>
+    );
+  const stateName = agreement.data.document.pincodeData && typeof agreement.data.document.pincodeData === "object"
+    ? String((agreement.data.document.pincodeData as { stateName?: string }).stateName ?? s.stateCode)
+    : s.stateCode;
+  return <StampView id={id} s={s} stateName={stateName} />;
 }
