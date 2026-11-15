@@ -7,7 +7,7 @@ A mobile app for India that produces ready-to-sign property documents, starting 
 - the exact e-stamp to buy, with a handoff to the official government portal (the customer buys and pays there)
 - agreement PDF and editable DOCX, with the e-stamp certificate number when the customer adds it
 
-**Start with [docs/SYSTEM-DESIGN.md](docs/SYSTEM-DESIGN.md)**, the target architecture and plan. The editable source of that doc is a Claude Doc linked at its top.
+**Start with [docs/SYSTEM-DESIGN.md](docs/SYSTEM-DESIGN.md)**, the target architecture and plan. The editable source of that doc is a Claude Doc linked at its top. **Before changing anything, read [memory.md](memory.md)**: the rules every change follows (system design and design language).
 
 > The repo is mid-rebuild: the API runs in memory with sandbox OTP, and the mobile app has placeholder screens waiting for the approved UI design. See the execution plan in the system design.
 

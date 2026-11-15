@@ -1,3 +1,5 @@
+> Project rules first: follow [memory.md](../../memory.md) at the repo root (system design and design language). This file only covers Expo specifics.
+
 This is an Expo/React Native mobile application. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
 
 ## Expo has changed — do not trust your training data
