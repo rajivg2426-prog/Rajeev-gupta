@@ -1,5 +1,7 @@
 # LegalKart Paper Generator — Product & Technical Specification
 
+> Historical spec from before the rebuild. Paths below use the old `legalkart/` layout, and the e-stamp purchase and payment flow it describes has been replaced by the government-portal handoff. See [SYSTEM-DESIGN.md](SYSTEM-DESIGN.md) for the current design.
+
 **Version:** 1.0 · **Date:** 16 Oct 2026 · **Market:** India
 
 **What it does:** anyone can produce a ready-to-sign property document (a rent agreement, an agreement to sell, an affidavit and so on) by entering the parties' details. The app:

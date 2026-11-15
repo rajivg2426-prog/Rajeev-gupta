@@ -1,0 +1,6 @@
+{
+  "name": "@legalkart/db",
+  "private": true,
+  "version": "0.1.0",
+  "description": "PostgreSQL 16 schema and development seed. To be ported to Drizzle migrations."
+}

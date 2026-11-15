@@ -1,5 +1,5 @@
 {
-  "name": "legalkart-server-sample",
+  "name": "@legalkart/api",
   "private": true,
   "version": "0.1.0",
   "type": "module",

@@ -1,5 +1,7 @@
 # LegalKart Paper Generator: User Guide
 
+> Outdated: written for the earlier design, where LegalKart took payment and bought the e-stamp. The app now sends customers to the government portal to buy the stamp themselves; this guide will be rewritten once the new screens are final.
+
 *Make a stamped rent agreement on your phone in about 10 minutes, with no trip to a stamp vendor.*
 
 **This guide covers:** the Residential Rent Agreement in Delhi, Haryana and Karnataka (launch states). Other documents follow the same steps.

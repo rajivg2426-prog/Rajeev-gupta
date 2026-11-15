@@ -60,11 +60,11 @@ const readJson = (p: string) => JSON.parse(readFileSync(here(p), "utf8"));
 
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
-export const validateTemplateSchema = ajv.compile(readJson("../../../schemas/document-template.schema.json"));
-export const validateInstanceSchema = ajv.compile(readJson("../../../schemas/document-instance.schema.json"));
+export const validateTemplateSchema = ajv.compile(readJson("../../../../packages/templates/schemas/document-template.schema.json"));
+export const validateInstanceSchema = ajv.compile(readJson("../../../../packages/templates/schemas/document-instance.schema.json"));
 
 export function loadTemplate(file: string): DocumentTemplate {
-  const json = readJson(`../../../templates/${file}`);
+  const json = readJson(`../../../../packages/templates/templates/${file}`);
   if (!validateTemplateSchema(json)) {
     throw new Error(`Invalid template ${file}: ${ajv.errorsText(validateTemplateSchema.errors)}`);
   }

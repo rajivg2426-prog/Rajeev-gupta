@@ -4,7 +4,7 @@ Source of truth: the editable Claude Doc at https://claude.ai/artifact/7BFeGdb8L
 
 ## Purpose and scope
 
-This design is the target architecture for rebuilding LegalKart into a shippable mobile product, and the shared context for every later change. It covers the mobile app, the backend services, data, integrations and infra. It replaces the parts of `legalkart/SPEC.md` it overlaps.
+This design is the target architecture for rebuilding LegalKart into a shippable mobile product, and the shared context for every later change. It covers the mobile app, the backend services, data, integrations and infra. It replaces the parts of `docs/SPEC.md` it overlaps.
 
 **Goal of the rebuild:** a landlord in NCR or Bengaluru goes from property pincode to a ready-to-sign rent agreement in under 10 minutes, on Android and iOS.
 
@@ -30,7 +30,7 @@ The backend flow works end to end in sandbox mode (13 tests pass), but there is 
 
 | Area | Today | Fix |
 | --- | --- | --- |
-| Repo | Root is an empty Vite "Paras ENT Clinic" site; LegalKart lives in `legalkart/` | Make LegalKart the repo, delete the clinic site |
+| Repo | Done: monorepo at the root, clinic site deleted | – |
 | Mobile | One file, `RentAgreementCheckout.tsx`; no Expo project, navigation, or form screens | New Expo app; design every screen in an artifact first |
 | Persistence | `MemoryStore`, data lost on restart; `schema.sql` exists but unused | Postgres via Drizzle, migrations |
 | Auth | `x-user-id` header stub | Phone OTP login, JWT + refresh token |
@@ -128,7 +128,7 @@ The backend stays a modular monolith: one Fastify API process plus one worker pr
 
 ## Data model and storage
 
-PostgreSQL 16 is the source of truth, starting from the existing `legalkart/db/schema.sql`, ported to Drizzle migrations.
+PostgreSQL 16 is the source of truth, starting from the existing `packages/db/schema.sql`, ported to Drizzle migrations.
 
 | Store | Holds | Notes |
 | --- | --- | --- |
@@ -263,7 +263,7 @@ Work goes in three steps; each step ends with code merged and this doc updated. 
 
 **Step 2: mobile app**
 
-- [ ] Restructure the repo into the monorepo layout; remove the clinic site
+- [x] Restructure the repo into the monorepo layout; remove the clinic site
 - [ ] Design system in an artifact: colours, type, buttons, inputs, cards, status chips
 - [ ] Design every screen of the journey in the artifact; iterate until approved
 - [ ] Scaffold the Expo app (Router, NativeWind, TanStack Query, typed API client)

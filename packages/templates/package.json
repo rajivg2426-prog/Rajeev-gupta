@@ -1,0 +1,7 @@
+{
+  "name": "@legalkart/templates",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Document templates and the JSON Schemas for templates and filled document instances.",
+  "files": ["templates", "schemas"]
+}

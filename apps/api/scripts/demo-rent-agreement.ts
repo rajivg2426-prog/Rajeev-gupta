@@ -1,5 +1,5 @@
 // Runs the whole Rent Agreement flow in sandbox mode and writes the outputs
-// to ../samples/: stamped PDF, editable DOCX, and the instance snapshot JSON.
+// to docs/samples/: stamped PDF, editable DOCX, and the instance snapshot JSON.
 //   npm run demo
 import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -8,7 +8,7 @@ import type { ConsoleOtpProvider } from "../src/otp/providers.ts";
 import type { FakeRazorpayGateway } from "../src/payments/razorpay.ts";
 import { sampleForm } from "../test/fixtures.ts";
 
-const out = fileURLToPath(new URL("../../samples/", import.meta.url));
+const out = fileURLToPath(new URL("../../../docs/samples/", import.meta.url));
 mkdirSync(out, { recursive: true });
 const c = buildContainer({ NODE_ENV: "development" });
 const r = c.rent;
