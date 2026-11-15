@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://legalkart.example/schemas/document-template.schema.json",
+  "title": "LegalKart Document Template",
+  "description": "Defines one versioned, state-scoped legal document template: its dynamic form, party rules, OTP verification policy, pincode binding, stamp-duty inputs, e-stamp certificate mapping, clauses, signature blocks and output settings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "templateKey", "version", "documentType", "title", "jurisdiction", "legalMeta",
+    "parties", "sections", "pincodeBinding", "stampDuty", "eStamp", "verification",
+    "body", "signatureBlocks", "output", "disclaimer"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "templateKey": { "type": "string", "pattern": "^[a-z0-9]+([.-][a-z0-9]+)*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "documentType": { "$ref": "#/$defs/documentTypeCode" },
+    "title": { "type": "string", "minLength": 3 },
+    "locale": { "type": "string", "default": "en-IN" },
+
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["states"],
+      "properties": {
+        "states": {
+          "type": "array",
+          "description": "State codes this template is valid for. Empty array = all states without a more specific template.",
+          "items": { "$ref": "#/$defs/stateCode" },
+          "uniqueItems": true
+        },
+        "excludedStates": { "type": "array", "items": { "$ref": "#/$defs/stateCode" }, "uniqueItems": true }
+      }
+    },
+
+    "legalMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["governingLaws", "registration", "eSignPermitted", "lawyerReviewRecommended"],
+      "properties": {
+        "governingLaws": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "registration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mandatory"],
+          "properties": {
+            "mandatory": { "type": "boolean" },
+            "mandatoryIf": { "$ref": "#/$defs/condition", "description": "e.g. term > 11 months triggers compulsory registration (Registration Act 1908, s.17)." },
+            "note": { "type": "string" }
+          }
+        },
+        "maxTermMonths": { "type": "integer", "minimum": 1 },
+        "eSignPermitted": { "type": "boolean", "description": "False for instruments excluded by the IT Act 2000 First Schedule unless counsel has signed off." },
+        "notarisationRecommended": { "type": "boolean", "default": false },
+        "lawyerReviewRecommended": { "type": "boolean" },
+        "reviewedBy": { "type": "string" },
+        "reviewedOn": { "type": "string", "format": "date" }
+      }
+    },
+
+    "parties": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "label", "min", "max", "fields"],
+        "properties": {
+          "role": { "$ref": "#/$defs/partyRole" },
+          "label": { "type": "string" },
+          "min": { "type": "integer", "minimum": 0 },
+          "max": { "type": "integer", "minimum": 1 },
+          "otpRequired": { "type": "boolean", "default": false },
+          "autofillFromProfile": { "type": "boolean", "default": false, "description": "Offer 'This is me' to fill from user_profiles." },
+          "allowEntity": { "type": "boolean", "default": false },
+          "fields": { "type": "array", "items": { "$ref": "#/$defs/field" }, "minItems": 1 }
+        }
+      }
+    },
+
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "fields"],
+        "properties": {
+          "id": { "$ref": "#/$defs/identifier" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "showIf": { "$ref": "#/$defs/condition" },
+          "fields": { "type": "array", "items": { "$ref": "#/$defs/field" }, "minItems": 1 }
+        }
+      }
+    },
+
+    "pincodeBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fieldPath", "derive"],
+      "description": "Which form field holds the PROPERTY pincode, and which jurisdiction facts are derived from it into the document context under `pincodeData`.",
+      "properties": {
+        "fieldPath": { "$ref": "#/$defs/fieldPath" },
+        "derive": {
+          "type": "array",
+          "items": { "enum": ["state", "district", "sro", "areaType", "postOffice", "stampRates", "registrationFee"] },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "requireSroConfirmation": { "type": "boolean", "default": true, "description": "Ask the user to confirm SRO when mapping confidence is below threshold." },
+        "lockStateToJurisdiction": { "type": "boolean", "default": true, "description": "Reject pincodes whose state is not in jurisdiction.states." }
+      }
+    },
+
+    "stampDuty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs"],
+      "description": "Maps form fields to the inputs of the stamp-duty engine. Rates themselves live in the stamp_rates table, never in the template.",
+      "properties": {
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "considerationPaise": { "$ref": "#/$defs/fieldPath" },
+            "marketValuePaise": { "$ref": "#/$defs/fieldPath" },
+            "monthlyRentPaise": { "$ref": "#/$defs/fieldPath" },
+            "securityDepositPaise": { "$ref": "#/$defs/fieldPath" },
+            "termMonths": { "$ref": "#/$defs/fieldPath" },
+            "annualEscalationBps": { "$ref": "#/$defs/fieldPath" },
+            "buyerGender": { "$ref": "#/$defs/fieldPath" }
+          }
+        },
+        "dutyPayerRole": { "$ref": "#/$defs/partyRole" },
+        "userOverrideAllowed": { "type": "boolean", "default": false }
+      }
+    },
+
+    "eStamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "firstPartyRole", "secondPartyRole", "dutyPaidByRole", "descriptionOfDocument", "articleCodes", "fulfilmentModes"],
+      "description": "How certificate fields printed on the e-stamp are populated.",
+      "properties": {
+        "required": { "type": "boolean" },
+        "firstPartyRole": { "$ref": "#/$defs/partyRole" },
+        "secondPartyRole": { "$ref": "#/$defs/partyRole" },
+        "dutyPaidByRole": { "$ref": "#/$defs/partyRole" },
+        "purchasedByRole": { "$ref": "#/$defs/partyRole" },
+        "descriptionOfDocument": { "type": "string", "description": "Text for 'Description of Document' on the certificate." },
+        "propertyDescriptionTemplate": { "type": "string", "description": "Handlebars expression rendered into 'Property Description'." },
+        "articleCodes": {
+          "type": "object",
+          "description": "State-specific stamp schedule article for this instrument, keyed by state code; '*' is the fallback.",
+          "propertyNames": { "pattern": "^([A-Z]{2}|\\*)$" },
+          "additionalProperties": { "type": "string" },
+          "minProperties": 1
+        },
+        "fulfilmentModes": {
+          "type": "array",
+          "items": { "enum": ["DIGITAL_SELF_PRINT", "ACC_PRINT_COURIER", "ACC_PICKUP", "FRANKING"] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "placement": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "certificateAsFirstPage": { "type": "boolean", "default": true },
+            "footerText": { "type": "string", "description": "Handlebars; printed on every page, e.g. certificate number + page x/y." },
+            "qrOnEveryPage": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredRoles", "channels", "blockGenerationUntilVerified"],
+      "properties": {
+        "requiredRoles": { "type": "array", "items": { "$ref": "#/$defs/partyRole" }, "uniqueItems": true },
+        "optionalRoles": { "type": "array", "items": { "$ref": "#/$defs/partyRole" }, "uniqueItems": true },
+        "channels": { "type": "array", "items": { "enum": ["SMS", "WHATSAPP", "VOICE"] }, "minItems": 1, "uniqueItems": true },
+        "otpLength": { "type": "integer", "minimum": 4, "maximum": 8, "default": 6 },
+        "otpTtlSeconds": { "type": "integer", "minimum": 60, "maximum": 900, "default": 300 },
+        "maxAttempts": { "type": "integer", "minimum": 1, "maximum": 10, "default": 5 },
+        "blockGenerationUntilVerified": { "type": "boolean" },
+        "reverifyIfPhoneChanged": { "type": "boolean", "default": true },
+        "consentTextVersion": { "type": "string" }
+      }
+    },
+
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preamble", "clauses"],
+      "properties": {
+        "preamble": { "type": "string", "description": "Handlebars text." },
+        "recitals": { "type": "array", "items": { "$ref": "#/$defs/clause" } },
+        "clauses": { "type": "array", "items": { "$ref": "#/$defs/clause" }, "minItems": 1 },
+        "schedules": { "type": "array", "items": { "$ref": "#/$defs/clause" } }
+      }
+    },
+
+    "signatureBlocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "caption"],
+        "properties": {
+          "role": { "$ref": "#/$defs/partyRole" },
+          "caption": { "type": "string" },
+          "repeatForEachParty": { "type": "boolean", "default": true },
+          "showPhotoBox": { "type": "boolean", "default": false },
+          "showThumbImpression": { "type": "boolean", "default": false },
+          "showVerifiedBadge": { "type": "boolean", "default": true, "description": "Print 'Mobile verified via OTP on <date>' under the block." }
+        }
+      }
+    },
+
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formats", "pageSize"],
+      "properties": {
+        "formats": { "type": "array", "items": { "enum": ["PDF", "DOCX"] }, "minItems": 1, "uniqueItems": true },
+        "pageSize": { "enum": ["A4", "LEGAL"] },
+        "marginsMm": { "type": "object", "properties": { "top": { "type": "number" }, "bottom": { "type": "number" }, "left": { "type": "number" }, "right": { "type": "number" } }, "additionalProperties": false },
+        "watermarkUntilStamped": { "type": "string", "default": "DRAFT — NOT STAMPED" },
+        "fileNameTemplate": { "type": "string" }
+      }
+    },
+
+    "disclaimer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "requireAcknowledgement"],
+      "properties": {
+        "text": { "type": "string" },
+        "requireAcknowledgement": { "type": "boolean" },
+        "printOnDocument": { "type": "boolean", "default": false }
+      }
+    }
+  },
+
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$" },
+    "fieldPath": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*$" },
+    "stateCode": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "documentTypeCode": {
+      "enum": [
+        "RENT_AGREEMENT", "LEAVE_AND_LICENCE", "COMMERCIAL_LEASE", "RENT_RECEIPT", "LEASE_TERMINATION",
+        "SALE_AGREEMENT", "SALE_DEED", "BOOKING_RECEIPT", "POSSESSION_LETTER",
+        "GIFT_DEED", "RELEASE_DEED", "PARTITION_DEED", "FAMILY_SETTLEMENT", "EXCHANGE_DEED",
+        "GPA", "SPA", "POA_REVOCATION", "MORTGAGE_DEED",
+        "AFFIDAVIT_GENERAL", "INDEMNITY_BOND", "NOC_PROPERTY", "UNDERTAKING", "WILL"
+      ]
+    },
+    "partyRole": {
+      "enum": ["LANDLORD", "TENANT", "LICENSOR", "LICENSEE", "SELLER", "BUYER", "DONOR", "DONEE", "PRINCIPAL", "ATTORNEY", "DEPONENT", "WITNESS", "CO_OWNER", "GUARANTOR"]
+    },
+    "condition": {
+      "description": "Tiny, safe expression language (no eval). Combine with all/any/not.",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["field", "op"],
+          "properties": {
+            "field": { "$ref": "#/$defs/fieldPath" },
+            "op": { "enum": ["eq", "neq", "gt", "gte", "lt", "lte", "in", "truthy", "falsy"] },
+            "value": {}
+          }
+        },
+        { "type": "object", "additionalProperties": false, "required": ["all"], "properties": { "all": { "type": "array", "items": { "$ref": "#/$defs/condition" }, "minItems": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["any"], "properties": { "any": { "type": "array", "items": { "$ref": "#/$defs/condition" }, "minItems": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["not"], "properties": { "not": { "$ref": "#/$defs/condition" } } }
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "label"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "type": { "enum": ["text", "textarea", "number", "money", "date", "select", "radio", "checkbox", "phone", "email", "pincode", "pan", "aadhaarLast4", "address", "percent", "repeater"] },
+        "label": { "type": "string" },
+        "hint": { "type": "string" },
+        "required": { "type": "boolean", "default": false },
+        "default": {},
+        "options": {
+          "type": "array",
+          "items": { "type": "object", "required": ["value", "label"], "properties": { "value": {}, "label": { "type": "string" } }, "additionalProperties": false }
+        },
+        "validation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pattern": { "type": "string" },
+            "min": { "type": "number" },
+            "max": { "type": "number" },
+            "minLength": { "type": "integer" },
+            "maxLength": { "type": "integer" },
+            "message": { "type": "string" }
+          }
+        },
+        "autofillFrom": { "type": "string", "description": "Dot path into user profile, e.g. profile.fullName, profile.address.pincode." },
+        "showIf": { "$ref": "#/$defs/condition" },
+        "pii": { "type": "boolean", "default": false, "description": "Encrypt at rest and mask in logs." },
+        "itemFields": { "type": "array", "items": { "$ref": "#/$defs/field" }, "description": "For type=repeater (e.g. fixtures list)." }
+      }
+    },
+    "clause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "heading": { "type": "string" },
+        "text": { "type": "string", "description": "Handlebars; may reference form fields, parties, pincodeData, eStamp, verification." },
+        "showIf": { "$ref": "#/$defs/condition" },
+        "states": { "type": "array", "items": { "$ref": "#/$defs/stateCode" }, "description": "Only include for these property states." },
+        "locked": { "type": "boolean", "default": true, "description": "If false, user may edit wording in DOCX." }
+      }
+    }
+  }
+}

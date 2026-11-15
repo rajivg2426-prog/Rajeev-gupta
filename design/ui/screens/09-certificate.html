@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LegalKart · 09 · Add certificate (enter or skip)</title>
+<!-- Approved design, v1 (15 Nov 2026). Status: READY_TO_STAMP → GENERATED · format check only, never "verified"
+     Source: https://claude.ai/artifact/GemeDwATFPQWHhtNifaGf9
+     Tokens: ../tailwind.tokens.js. CSS below = globalCss() + Tailwind 3.4.17 build of the design page.
+     Port the markup inside <main> to NativeWind: div→View, span→Text, button→Pressable, svg→lucide-react-native.
+     The 9:41 status bar row is device chrome, not part of the screen. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --lk-canvas: 243 246 245;
+  --lk-surface: 255 255 255;
+  --lk-sunken: 233 238 236;
+  --lk-line: 211 220 216;
+  --lk-line-strong: 159 176 170;
+  --lk-ink: 19 32 28;
+  --lk-ink-2: 71 88 83;
+  --lk-ink-3: 111 127 122;
+  --lk-primary: 14 92 81;
+  --lk-primary-pressed: 10 71 63;
+  --lk-on-primary: 255 255 255;
+  --lk-primary-soft: 221 237 232;
+  --lk-success: 23 112 63;
+  --lk-success-soft: 221 241 228;
+  --lk-warn: 147 82 7;
+  --lk-warn-soft: 251 235 211;
+  --lk-danger: 174 42 31;
+  --lk-danger-soft: 251 226 222;
+  --lk-info: 40 88 154;
+  --lk-info-soft: 224 234 247;
+  --lk-paper: 255 254 250;
+  --lk-watermark: 201 55 44;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lk-canvas: 12 19 17;
+    --lk-surface: 20 29 26;
+    --lk-sunken: 27 38 34;
+    --lk-line: 40 54 47;
+    --lk-line-strong: 74 92 85;
+    --lk-ink: 230 238 235;
+    --lk-ink-2: 168 183 178;
+    --lk-ink-3: 125 140 135;
+    --lk-primary: 82 185 167;
+    --lk-primary-pressed: 67 166 148;
+    --lk-on-primary: 3 32 27;
+    --lk-primary-soft: 18 58 51;
+    --lk-success: 85 198 141;
+    --lk-success-soft: 18 50 34;
+    --lk-warn: 228 166 80;
+    --lk-warn-soft: 58 40 16;
+    --lk-danger: 242 122 110;
+    --lk-danger-soft: 61 24 20;
+    --lk-info: 134 174 234;
+    --lk-info-soft: 22 38 62;
+    --lk-paper: 244 242 234;
+    --lk-watermark: 201 55 44;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --lk-canvas: 12 19 17;
+  --lk-surface: 20 29 26;
+  --lk-sunken: 27 38 34;
+  --lk-line: 40 54 47;
+  --lk-line-strong: 74 92 85;
+  --lk-ink: 230 238 235;
+  --lk-ink-2: 168 183 178;
+  --lk-ink-3: 125 140 135;
+  --lk-primary: 82 185 167;
+  --lk-primary-pressed: 67 166 148;
+  --lk-on-primary: 3 32 27;
+  --lk-primary-soft: 18 58 51;
+  --lk-success: 85 198 141;
+  --lk-success-soft: 18 50 34;
+  --lk-warn: 228 166 80;
+  --lk-warn-soft: 58 40 16;
+  --lk-danger: 242 122 110;
+  --lk-danger-soft: 61 24 20;
+  --lk-info: 134 174 234;
+  --lk-info-soft: 22 38 62;
+  --lk-paper: 244 242 234;
+  --lk-watermark: 201 55 44;
+  color-scheme: dark;
+}
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Mukta,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:IBM Plex Mono,ui-monospace,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.bottom-0{bottom:0}.left-0{left:0}.right-0{right:0}.mx-auto{margin-left:auto;margin-right:auto}.-mt-1{margin-top:-.25rem}.-mt-2{margin-top:-.5rem}.-mt-3{margin-top:-.75rem}.ml-0\.5{margin-left:.125rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.hidden{display:none}.h-1{height:.25rem}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:.5rem}.h-2\.5{height:.625rem}.h-3{height:.75rem}.h-3\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\[360px\]{height:360px}.h-\[60px\]{height:60px}.h-\[76px\]{height:76px}.h-\[844px\]{height:844px}.h-\[864px\]{height:864px}.h-full{height:100%}.h-touch{height:48px}.h-touch-lg{height:56px}.min-h-\[96px\]{min-height:96px}.min-h-touch{min-height:48px}.w-0\.5{width:.125rem}.w-1{width:.25rem}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:.5rem}.w-24{width:6rem}.w-3{width:.75rem}.w-3\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-\[132px\]{width:132px}.w-\[300px\]{width:300px}.w-\[320px\]{width:320px}.w-\[340px\]{width:340px}.w-\[390px\]{width:390px}.w-\[410px\]{width:410px}.w-\[46px\]{width:46px}.w-\[52px\]{width:52px}.w-full{width:100%}.min-w-0{min-width:0}.min-w-\[240px\]{min-width:240px}.min-w-\[300px\]{min-width:300px}.min-w-\[620px\]{min-width:620px}.max-w-\[1320px\]{max-width:1320px}.max-w-\[68ch\]{max-width:68ch}.max-w-full{max-width:100%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-rotate-\[30deg\]{--tw-rotate:-30deg}.-rotate-\[30deg\],.rotate-45{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg}.rotate-90{--tw-rotate:90deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0\.5{gap:.125rem}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-10{gap:2.5rem}.gap-14{gap:3.5rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-7{gap:1.75rem}.gap-8{gap:2rem}.gap-x-10{-moz-column-gap:2.5rem;column-gap:2.5rem}.gap-x-8{-moz-column-gap:2rem;column-gap:2rem}.gap-y-14{row-gap:3.5rem}.gap-y-6{row-gap:1.5rem}.self-start{align-self:flex-start}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.whitespace-nowrap{white-space:nowrap}.text-wrap{text-wrap:wrap}.rounded-\[38px\]{border-radius:38px}.rounded-\[48px\]{border-radius:48px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:14px}.rounded-md{border-radius:10px}.rounded-sm{border-radius:6px}.rounded-xl{border-radius:20px}.border{border-width:1px}.border-2{border-width:2px}.border-\[3px\]{border-width:3px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-r{border-right-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-danger{--tw-border-opacity:1;border-color:rgb(var(--lk-danger)/var(--tw-border-opacity,1))}.border-danger\/40{border-color:rgb(var(--lk-danger)/.4)}.border-ink-3{--tw-border-opacity:1;border-color:rgb(var(--lk-ink-3)/var(--tw-border-opacity,1))}.border-ink\/60{border-color:rgb(var(--lk-ink)/.6)}.border-line{--tw-border-opacity:1;border-color:rgb(var(--lk-line)/var(--tw-border-opacity,1))}.border-line-strong{--tw-border-opacity:1;border-color:rgb(var(--lk-line-strong)/var(--tw-border-opacity,1))}.border-on-primary\/40{border-color:rgb(var(--lk-on-primary)/.4)}.border-primary{--tw-border-opacity:1;border-color:rgb(var(--lk-primary)/var(--tw-border-opacity,1))}.border-primary\/30{border-color:rgb(var(--lk-primary)/.3)}.border-watermark\/40{border-color:rgb(var(--lk-watermark)/.4)}.border-t-on-primary{--tw-border-opacity:1;border-top-color:rgb(var(--lk-on-primary)/var(--tw-border-opacity,1))}.bg-\[\#0b100e\]{--tw-bg-opacity:1;background-color:rgb(11 16 14/var(--tw-bg-opacity,1))}.bg-canvas{--tw-bg-opacity:1;background-color:rgb(var(--lk-canvas)/var(--tw-bg-opacity,1))}.bg-danger-soft{--tw-bg-opacity:1;background-color:rgb(var(--lk-danger-soft)/var(--tw-bg-opacity,1))}.bg-info{--tw-bg-opacity:1;background-color:rgb(var(--lk-info)/var(--tw-bg-opacity,1))}.bg-info-soft{--tw-bg-opacity:1;background-color:rgb(var(--lk-info-soft)/var(--tw-bg-opacity,1))}.bg-ink\/20{background-color:rgb(var(--lk-ink)/.2)}.bg-ink\/30{background-color:rgb(var(--lk-ink)/.3)}.bg-ink\/70{background-color:rgb(var(--lk-ink)/.7)}.bg-line{--tw-bg-opacity:1;background-color:rgb(var(--lk-line)/var(--tw-bg-opacity,1))}.bg-paper{--tw-bg-opacity:1;background-color:rgb(var(--lk-paper)/var(--tw-bg-opacity,1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(var(--lk-primary)/var(--tw-bg-opacity,1))}.bg-primary-soft{--tw-bg-opacity:1;background-color:rgb(var(--lk-primary-soft)/var(--tw-bg-opacity,1))}.bg-primary\/10{background-color:rgb(var(--lk-primary)/.1)}.bg-primary\/40{background-color:rgb(var(--lk-primary)/.4)}.bg-primary\/50{background-color:rgb(var(--lk-primary)/.5)}.bg-success-soft{--tw-bg-opacity:1;background-color:rgb(var(--lk-success-soft)/var(--tw-bg-opacity,1))}.bg-sunken{--tw-bg-opacity:1;background-color:rgb(var(--lk-sunken)/var(--tw-bg-opacity,1))}.bg-sunken\/60{background-color:rgb(var(--lk-sunken)/.6)}.bg-surface{--tw-bg-opacity:1;background-color:rgb(var(--lk-surface)/var(--tw-bg-opacity,1))}.bg-transparent{background-color:transparent}.bg-warn{--tw-bg-opacity:1;background-color:rgb(var(--lk-warn)/var(--tw-bg-opacity,1))}.bg-warn-soft{--tw-bg-opacity:1;background-color:rgb(var(--lk-warn-soft)/var(--tw-bg-opacity,1))}.bg-gradient-to-t{background-image:linear-gradient(to top,var(--tw-gradient-stops))}.from-paper{--tw-gradient-from:rgb(var(--lk-paper)/1) var(--tw-gradient-from-position);--tw-gradient-to:rgb(var(--lk-paper)/0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-paper\/0{--tw-gradient-to:rgb(var(--lk-paper)/0) var(--tw-gradient-to-position)}.fill-on-primary{fill:rgb(var(--lk-on-primary)/1)}.fill-primary{fill:rgb(var(--lk-primary)/1)}.fill-primary-soft{fill:rgb(var(--lk-primary-soft)/1)}.stroke-on-primary{stroke:rgb(var(--lk-on-primary)/1)}.p-0\.5{padding:.125rem}.p-1{padding:.25rem}.p-1\.5{padding:.375rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-\[10px\]{padding:10px}.px-1\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-3{padding-bottom:.75rem}.pb-4{padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pl-\[52px\]{padding-left:52px}.pr-4{padding-right:1rem}.pt-1{padding-top:.25rem}.pt-10{padding-top:2.5rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-4{padding-top:1rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:IBM Plex Mono,ui-monospace,monospace}.font-sans{font-family:Mukta,system-ui,sans-serif}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-amount{font-size:36px;line-height:42px}.text-body{font-size:16px;line-height:24px}.text-caption{font-size:12px;line-height:16px}.text-display{font-size:28px;line-height:34px}.text-heading{font-size:18px;line-height:24px}.text-label{font-size:14px;line-height:20px}.text-title{font-size:22px;line-height:28px}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-5{line-height:1.25rem}.leading-\[17px\]{line-height:17px}.tracking-\[0\.15em\]{letter-spacing:.15em}.tracking-\[0\.2em\]{letter-spacing:.2em}.tracking-\[0\.3em\]{letter-spacing:.3em}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}.text-\[\#1d1d1b\]{--tw-text-opacity:1;color:rgb(29 29 27/var(--tw-text-opacity,1))}.text-\[\#4b4b45\]{--tw-text-opacity:1;color:rgb(75 75 69/var(--tw-text-opacity,1))}.text-danger{--tw-text-opacity:1;color:rgb(var(--lk-danger)/var(--tw-text-opacity,1))}.text-info{--tw-text-opacity:1;color:rgb(var(--lk-info)/var(--tw-text-opacity,1))}.text-ink{--tw-text-opacity:1;color:rgb(var(--lk-ink)/var(--tw-text-opacity,1))}.text-ink-2{--tw-text-opacity:1;color:rgb(var(--lk-ink-2)/var(--tw-text-opacity,1))}.text-ink-3{--tw-text-opacity:1;color:rgb(var(--lk-ink-3)/var(--tw-text-opacity,1))}.text-ink-3\/40{color:rgb(var(--lk-ink-3)/.4)}.text-on-primary{--tw-text-opacity:1;color:rgb(var(--lk-on-primary)/var(--tw-text-opacity,1))}.text-on-primary\/80{color:rgb(var(--lk-on-primary)/.8)}.text-primary{--tw-text-opacity:1;color:rgb(var(--lk-primary)/var(--tw-text-opacity,1))}.text-success{--tw-text-opacity:1;color:rgb(var(--lk-success)/var(--tw-text-opacity,1))}.text-warn{--tw-text-opacity:1;color:rgb(var(--lk-warn)/var(--tw-text-opacity,1))}.text-watermark\/40{color:rgb(var(--lk-watermark)/.4)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-line{--tw-ring-opacity:1;--tw-ring-color:rgb(var(--lk-line)/var(--tw-ring-opacity,1))}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.last\:border-0:last-child{border-width:0}.active\:bg-primary-pressed:active{--tw-bg-opacity:1;background-color:rgb(var(--lk-primary-pressed)/var(--tw-bg-opacity,1))}@media (min-width:768px){.md\:py-12{padding-top:3rem;padding-bottom:3rem}}
+/* Page-only chrome (not part of the app) */
+body { background: rgb(var(--lk-canvas)); color: rgb(var(--lk-ink)); font-family: Mukta, system-ui, sans-serif; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; }
+.tabular { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid rgb(var(--lk-primary)); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+<main>
+<div class="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-canvas flex flex-col font-sans text-ink">
+    <div class="h-11 px-7 flex flex-row items-center justify-between shrink-0"><span class="text-label font-semibold tabular">9:41</span><span class="flex flex-row gap-1 items-center"><span class="w-4 h-2.5 rounded-sm bg-ink/70"></span><span class="w-6 h-3 rounded-sm border border-ink/60"></span></span></div>
+    <div class="px-2 pb-3 flex flex-col gap-2 shrink-0">
+      <div class="h-12 flex flex-row items-center gap-1">
+        <button class="w-12 h-12 rounded-full flex items-center justify-center" aria-label="Back"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <span class="flex-1 text-label font-medium text-ink-2">Step 6 of 6 · E-stamp</span>
+      </div>
+      <div class="px-3 flex flex-row gap-1"><div class="flex-1 h-1 rounded-full bg-primary"></div><div class="flex-1 h-1 rounded-full bg-primary"></div><div class="flex-1 h-1 rounded-full bg-primary"></div><div class="flex-1 h-1 rounded-full bg-primary"></div><div class="flex-1 h-1 rounded-full bg-primary"></div><div class="flex-1 h-1 rounded-full bg-primary"></div></div>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+      <div class="px-5 pt-3 pb-8 flex flex-col gap-6">
+        <div class="flex flex-col gap-1">
+          <span class="text-title font-semibold">Add the certificate number</span>
+          <span class="text-body text-ink-2">We print it in the footer of every page, so the agreement and the e-stamp stay together.</span>
+        </div>
+        <!-- where to find it -->
+        <div class="rounded-lg bg-paper border border-line p-4 flex flex-col gap-2">
+          <div class="flex flex-row items-center justify-between"><span class="text-[10px] font-bold tracking-widest text-[#4b4b45]">GOVERNMENT OF HARYANA</span><span class="text-[10px] font-bold tracking-widest text-[#4b4b45]">e-STAMP</span></div>
+          <div class="rounded-sm border-2 border-primary bg-primary/10 px-2 py-1 flex flex-row justify-between"><span class="text-[11px] font-semibold text-[#1d1d1b]">Certificate No.</span><span class="font-mono text-[11px] text-[#1d1d1b]">G0X2026K1234567</span></div>
+          <div class="flex flex-row justify-between px-2"><span class="text-[11px] text-[#4b4b45]">Certificate Issued Date</span><span class="text-[11px] text-[#4b4b45]">28-Nov-2026</span></div>
+          <div class="flex flex-row justify-between px-2"><span class="text-[11px] text-[#4b4b45]">Stamp Duty Amount (Rs.)</span><span class="text-[11px] text-[#4b4b45]">4,875</span></div>
+          <span class="text-caption text-ink-3 pt-1">Illustration only; the real layout and number format are confirmed after a test purchase.</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-label font-medium text-ink-2">E-stamp certificate number</span>
+          <div class="h-touch-lg px-4 rounded-md border-2 border-primary bg-surface flex flex-row items-center"><span class="font-mono text-heading tracking-wide">G0X2026K1234567</span><span class="w-0.5 h-6 bg-primary ml-0.5"></span></div>
+          <span class="flex flex-row items-center gap-1.5 text-caption text-success"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Looks like a Haryana certificate number</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-label font-medium text-ink-2">Issue date</span>
+          <div class="h-touch px-4 rounded-md border border-line-strong bg-surface flex flex-row items-center justify-between"><span class="text-body">28 Nov 2026</span><svg class="w-5 h-5 text-ink-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        </div>
+        <div class="rounded-md bg-sunken p-3 flex flex-row gap-2.5"><svg class="w-5 h-5 text-ink-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span class="text-label text-ink-2">We only check the number's format. We can't confirm your purchase. Check the certificate on the official portal before you sign.</span></div>
+      </div>
+    </div>
+    <div class="px-5 pb-8 pt-3 border-t border-line bg-surface flex flex-col gap-1 shrink-0">
+      <button class="w-full h-touch-lg rounded-md bg-primary flex items-center justify-center"><span class="text-body font-semibold text-on-primary">Add and make final PDF</span></button>
+      <button class="w-full h-touch rounded-md flex items-center justify-center"><span class="text-body font-semibold text-primary">Skip, download without it</span></button>
+      <span class="text-caption text-ink-3 text-center">Without a number, each page says "Attach the e-stamp certificate before signing." You can add it later.</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>
